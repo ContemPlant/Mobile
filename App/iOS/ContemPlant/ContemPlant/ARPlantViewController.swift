@@ -79,7 +79,7 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
         
         //add the plant node
         // Models from https://poly.google.com/
-        let assetName = "tree" //"forest" //plant" // "tree"
+        let assetName = "daisy" //"forest" //plant" // "tree"
         guard let plantScene = SCNScene(named: "art.scnassets/\(assetName).scn"),
             let plantNode = plantScene.rootNode.childNode(withName: assetName, recursively: false)
             else {
