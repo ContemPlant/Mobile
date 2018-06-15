@@ -40,6 +40,7 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
         //configure the config
         let config = ARWorldTrackingConfiguration()
         config.detectionImages = referenceImages
+        config.maximumNumberOfTrackedImages = 1 //  IMPORTANT for faster tracking! (if this is not set, moving a detected object in the world isn't really fast!!!!!
         
         //run the config
         let options: ARSession.RunOptions = [.resetTracking, .removeExistingAnchors]
