@@ -23,6 +23,11 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
         // DEBUG:
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
+        
+        // Lighting setup
+        // TODO: improve lighting (maybe also the scn-file-models) so that automaticallyUpdatesLighting works
+        sceneView.autoenablesDefaultLighting = true //to support scn-files like daisy
+        sceneView.automaticallyUpdatesLighting = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,7 +85,7 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
         
         //add the plant node
         // Models from https://poly.google.com/
-        let assetName = "daisy" //"forest" //plant" // "tree"
+        let assetName = "daisy" //daisy" //"forest" //plant" // "tree"
         guard let plantScene = SCNScene(named: "art.scnassets/\(assetName).scn"),
             let plantNode = plantScene.rootNode.childNode(withName: assetName, recursively: false)
             else {
