@@ -1,0 +1,20 @@
+# define a global platform for my project
+platform :ios, '12.0'
+
+target 'ContemPlant' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for ContemPlant
+
+  target 'ContemPlantTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'ContemPlantUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
