@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //determine which UI should be shown (depending on whether logged in or not)
         
-        var loggedIn = true // TODO: implement saving session
+        var loggedIn = false // TODO: implement saving session
         
         let initialVC: UIViewController
         switch loggedIn {
@@ -28,7 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         //change root view controller
-        application.keyWindow?.rootViewController = initialVC
+        window?.rootViewController = initialVC
+        window?.makeKeyAndVisible()
         
         return true
     }
