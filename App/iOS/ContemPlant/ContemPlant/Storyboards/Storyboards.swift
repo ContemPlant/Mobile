@@ -10,6 +10,7 @@ import UIKit
 
 //Defines some static storyboard references for simpler access
 extension UIStoryboard {
-    static let main = UIStoryboard(name: "Main", bundle: nil)
+    static let plantsLearning = UIStoryboard(name: "PlantsLearning", bundle: nil)
     static let login = UIStoryboard(name: "Login", bundle: nil)
+    static let learningCompletionAR = UIStoryboard(name: "LearningCompletionAR", bundle: nil)
 }

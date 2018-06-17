@@ -11,6 +11,7 @@
 		6B152A4720D5E0CD00F5DE1C /* User+DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B152A4620D5E0CD00F5DE1C /* User+DefaultsKeys.swift */; };
 		6B152A4920D5E51A00F5DE1C /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B152A4820D5E51A00F5DE1C /* UserTests.swift */; };
 		6B152A4B20D5EA5B00F5DE1C /* LoginSignupViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B152A4A20D5EA5A00F5DE1C /* LoginSignupViewControllerDelegate.swift */; };
+		6B152A4D20D5F07000F5DE1C /* LearningCompletionAR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B152A4C20D5F07000F5DE1C /* LearningCompletionAR.storyboard */; };
 		6B1889CA20D5AB660078303F /* Dictionary+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1889C920D5AB660078303F /* Dictionary+Helper.swift */; };
 		6B6DD90420D5DD5D00630943 /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6DD90120D5DCB100630943 /* Pacifico-Regular.ttf */; };
 		6B6DD90520D5DD5D00630943 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B3B5520D5DB0400959723 /* Lato-Bold.ttf */; };
@@ -26,7 +27,7 @@
 		6BACC3D120D2DE49007D709E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BACC3D020D2DE49007D709E /* AppDelegate.swift */; };
 		6BACC3D320D2DE49007D709E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BACC3D220D2DE49007D709E /* art.scnassets */; };
 		6BACC3D520D2DE49007D709E /* ARPlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BACC3D420D2DE49007D709E /* ARPlantViewController.swift */; };
-		6BACC3D820D2DE49007D709E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BACC3D620D2DE49007D709E /* Main.storyboard */; };
+		6BACC3D820D2DE49007D709E /* PlantsLearning.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BACC3D620D2DE49007D709E /* PlantsLearning.storyboard */; };
 		6BACC3DA20D2DE4A007D709E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BACC3D920D2DE4A007D709E /* Assets.xcassets */; };
 		6BACC3DD20D2DE4A007D709E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BACC3DB20D2DE4A007D709E /* LaunchScreen.storyboard */; };
 		6BACC3E820D2DE4A007D709E /* ContemPlantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BACC3E720D2DE4A007D709E /* ContemPlantTests.swift */; };
@@ -64,6 +65,7 @@
 		6B152A4620D5E0CD00F5DE1C /* User+DefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+DefaultsKeys.swift"; sourceTree = "<group>"; };
 		6B152A4820D5E51A00F5DE1C /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		6B152A4A20D5EA5A00F5DE1C /* LoginSignupViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupViewControllerDelegate.swift; sourceTree = "<group>"; };
+		6B152A4C20D5F07000F5DE1C /* LearningCompletionAR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LearningCompletionAR.storyboard; sourceTree = "<group>"; };
 		6B1889C920D5AB660078303F /* Dictionary+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Helper.swift"; sourceTree = "<group>"; };
 		6B6DD90120D5DCB100630943 /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pacifico-Regular.ttf"; path = "ContemPlant/Ressources/Fonts/Pacifico/Pacifico-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		6B6DD90320D5DCCD00630943 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
@@ -80,7 +82,7 @@
 		6BACC3D020D2DE49007D709E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BACC3D220D2DE49007D709E /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		6BACC3D420D2DE49007D709E /* ARPlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARPlantViewController.swift; sourceTree = "<group>"; };
-		6BACC3D720D2DE49007D709E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6BACC3D720D2DE49007D709E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PlantsLearning.storyboard; sourceTree = "<group>"; };
 		6BACC3D920D2DE4A007D709E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6BACC3DC20D2DE4A007D709E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BACC3DE20D2DE4A007D709E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -250,7 +252,8 @@
 		6BBE91D820D476F500546755 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				6BACC3D620D2DE49007D709E /* Main.storyboard */,
+				6BACC3D620D2DE49007D709E /* PlantsLearning.storyboard */,
+				6B152A4C20D5F07000F5DE1C /* LearningCompletionAR.storyboard */,
 				6BBE91D620D476EC00546755 /* Login.storyboard */,
 				6BCB576120D47D42007CF737 /* Storyboards.swift */,
 			);
@@ -415,6 +418,7 @@
 				6B6DD90420D5DD5D00630943 /* Pacifico-Regular.ttf in Resources */,
 				6B6DD90520D5DD5D00630943 /* Lato-Bold.ttf in Resources */,
 				6B6DD90620D5DD5D00630943 /* Lato-BoldItalic.ttf in Resources */,
+				6B152A4D20D5F07000F5DE1C /* LearningCompletionAR.storyboard in Resources */,
 				6B6DD90720D5DD5D00630943 /* Lato-HairlineItalic.ttf in Resources */,
 				6B6DD90820D5DD5D00630943 /* Lato-Italic.ttf in Resources */,
 				6B6DD90920D5DD5D00630943 /* Lato-Light.ttf in Resources */,
@@ -426,7 +430,7 @@
 				6BACC3DD20D2DE4A007D709E /* LaunchScreen.storyboard in Resources */,
 				6BACC3DA20D2DE4A007D709E /* Assets.xcassets in Resources */,
 				6BBE91D720D476EC00546755 /* Login.storyboard in Resources */,
-				6BACC3D820D2DE49007D709E /* Main.storyboard in Resources */,
+				6BACC3D820D2DE49007D709E /* PlantsLearning.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,12 +577,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6BACC3D620D2DE49007D709E /* Main.storyboard */ = {
+		6BACC3D620D2DE49007D709E /* PlantsLearning.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6BACC3D720D2DE49007D709E /* Base */,
 			);
-			name = Main.storyboard;
+			name = PlantsLearning.storyboard;
 			sourceTree = "<group>";
 		};
 		6BACC3DB20D2DE4A007D709E /* LaunchScreen.storyboard */ = {

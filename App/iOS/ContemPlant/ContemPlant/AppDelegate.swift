@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let initialVC: UIViewController
         switch loggedIn {
         case true:
-            initialVC = UIStoryboard.main.instantiateInitialViewController()!
+            initialVC = UIStoryboard.plantsLearning.instantiateInitialViewController()!
         case false:
             initialVC = UIStoryboard.login.instantiateInitialViewController()!
         }
