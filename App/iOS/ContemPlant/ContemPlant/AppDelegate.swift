@@ -19,17 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let loggedIn = User.current != nil // TODO: implement saving session
         
-        let initialVC: UIViewController
-        switch loggedIn {
-        case true:
-            initialVC = UIStoryboard.plantsLearning.instantiateInitialViewController()!
-        case false:
-            initialVC = UIStoryboard.login.instantiateInitialViewController()!
-        }
+        let initialVC = getInitialViewControllerInstance(ifLoggedIn: loggedIn)
         
         //change root view controller
-        window?.rootViewController = initialVC
-        window?.makeKeyAndVisible()
+        changeRootViewController(basedOnLoggedIn: loggedIn, animated: false, completion: nil)
         
         return true
     }
@@ -56,6 +49,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
 
+//MARK: - determine ViewController after Application launch
+extension AppDelegate {
+    func getInitialViewControllerInstance(ifLoggedIn loggedIn: Bool) -> UIViewController {
+        if loggedIn {
+            return UIStoryboard.plantsLearning.instantiateInitialViewController()!
+        }
+        else {
+            return UIStoryboard.login.instantiateInitialViewController()!
+        }
+    }
+    
+    func changeRootViewController(basedOnLoggedIn loggedIn: Bool, animated: Bool, completion: ((_ completed: Bool) -> Void)?) {
+        //make sure, window is not nil, otherwise there's nothing to transition
+        guard let window = window else {
+            fatalError("Should not happen, to be honest...")
+        }
+        
+        let newRootViewController = getInitialViewControllerInstance(ifLoggedIn: loggedIn)
+        
+        //not animated
+        guard animated else {
+            window.rootViewController = newRootViewController
+            window.makeKeyAndVisible()
+            return
+        }
+        
+        //animated
+        UIView.transition(with: window, duration: 0.3, options: (loggedIn ? .transitionFlipFromLeft : .transitionFlipFromRight), animations: {
+            window.rootViewController = newRootViewController
+        }) { (completed) in
+            completion?(completed)
+        }
+        
+    }
+}
+
+
+//MARK: - simplified AppDelegate access
+extension AppDelegate {
+    static var current = UIApplication.shared.delegate! as! AppDelegate
+}
