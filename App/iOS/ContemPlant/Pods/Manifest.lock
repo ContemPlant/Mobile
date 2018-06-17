@@ -1,16 +1,22 @@
 PODS:
+  - Apollo (0.8.0):
+    - Apollo/Core (= 0.8.0)
+  - Apollo/Core (0.8.0)
   - SwiftyUserDefaults (4.0.0-alpha.1)
 
 DEPENDENCIES:
+  - Apollo
   - SwiftyUserDefaults (= 4.0.0-alpha.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Apollo
     - SwiftyUserDefaults
 
 SPEC CHECKSUMS:
+  Apollo: 66e0f52289551545adb7ecdd994e713fdbae26eb
   SwiftyUserDefaults: cebe0ff9472f52699772a514b6f7155861d8069b
 
-PODFILE CHECKSUM: b5e7a7ae4a948c7d433d098605ac52e36dc36645
+PODFILE CHECKSUM: b3729e4c69ad5a3353a7559901ec4bd2377756e2
 
 COCOAPODS: 1.5.3
