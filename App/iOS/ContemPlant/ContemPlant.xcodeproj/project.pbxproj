@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		52D7A5A8942644C4B0CE565E /* Pods_ContemPlant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A71A1491CF75C31B33CD48 /* Pods_ContemPlant.framework */; };
 		6B152A4720D5E0CD00F5DE1C /* User+DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B152A4620D5E0CD00F5DE1C /* User+DefaultsKeys.swift */; };
+		6B152A4920D5E51A00F5DE1C /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B152A4820D5E51A00F5DE1C /* UserTests.swift */; };
 		6B1889CA20D5AB660078303F /* Dictionary+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1889C920D5AB660078303F /* Dictionary+Helper.swift */; };
 		6B6DD90420D5DD5D00630943 /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6DD90120D5DCB100630943 /* Pacifico-Regular.ttf */; };
 		6B6DD90520D5DD5D00630943 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B3B5520D5DB0400959723 /* Lato-Bold.ttf */; };
@@ -60,6 +61,7 @@
 		29BD6BA057B39A27CC35DF6F /* Pods-ContemPlant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContemPlant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ContemPlant/Pods-ContemPlant.debug.xcconfig"; sourceTree = "<group>"; };
 		31A71A1491CF75C31B33CD48 /* Pods_ContemPlant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContemPlant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B152A4620D5E0CD00F5DE1C /* User+DefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+DefaultsKeys.swift"; sourceTree = "<group>"; };
+		6B152A4820D5E51A00F5DE1C /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		6B1889C920D5AB660078303F /* Dictionary+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Helper.swift"; sourceTree = "<group>"; };
 		6B6DD90120D5DCB100630943 /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pacifico-Regular.ttf"; path = "ContemPlant/Ressources/Fonts/Pacifico/Pacifico-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		6B6DD90320D5DCCD00630943 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				6BACC3E720D2DE4A007D709E /* ContemPlantTests.swift */,
+				6B152A4820D5E51A00F5DE1C /* UserTests.swift */,
 				6BACC3E920D2DE4A007D709E /* Info.plist */,
 			);
 			path = ContemPlantTests;
@@ -537,6 +540,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B152A4920D5E51A00F5DE1C /* UserTests.swift in Sources */,
 				6BACC3E820D2DE4A007D709E /* ContemPlantTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
