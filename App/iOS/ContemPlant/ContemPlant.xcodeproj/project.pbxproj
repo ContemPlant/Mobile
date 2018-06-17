@@ -10,6 +10,7 @@
 		52D7A5A8942644C4B0CE565E /* Pods_ContemPlant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A71A1491CF75C31B33CD48 /* Pods_ContemPlant.framework */; };
 		6B152A4720D5E0CD00F5DE1C /* User+DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B152A4620D5E0CD00F5DE1C /* User+DefaultsKeys.swift */; };
 		6B152A4920D5E51A00F5DE1C /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B152A4820D5E51A00F5DE1C /* UserTests.swift */; };
+		6B152A4B20D5EA5B00F5DE1C /* LoginSignupViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B152A4A20D5EA5A00F5DE1C /* LoginSignupViewControllerDelegate.swift */; };
 		6B1889CA20D5AB660078303F /* Dictionary+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1889C920D5AB660078303F /* Dictionary+Helper.swift */; };
 		6B6DD90420D5DD5D00630943 /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6DD90120D5DCB100630943 /* Pacifico-Regular.ttf */; };
 		6B6DD90520D5DD5D00630943 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B3B5520D5DB0400959723 /* Lato-Bold.ttf */; };
@@ -62,6 +63,7 @@
 		31A71A1491CF75C31B33CD48 /* Pods_ContemPlant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContemPlant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B152A4620D5E0CD00F5DE1C /* User+DefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+DefaultsKeys.swift"; sourceTree = "<group>"; };
 		6B152A4820D5E51A00F5DE1C /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
+		6B152A4A20D5EA5A00F5DE1C /* LoginSignupViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupViewControllerDelegate.swift; sourceTree = "<group>"; };
 		6B1889C920D5AB660078303F /* Dictionary+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Helper.swift"; sourceTree = "<group>"; };
 		6B6DD90120D5DCB100630943 /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pacifico-Regular.ttf"; path = "ContemPlant/Ressources/Fonts/Pacifico/Pacifico-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		6B6DD90320D5DCCD00630943 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				6BACC40420D2E54B007D709E /* StartViewController.swift */,
 				6BACC3D420D2DE49007D709E /* ARPlantViewController.swift */,
 				6BBE91DE20D47B1A00546755 /* LoginSignupViewController.swift */,
+				6B152A4A20D5EA5A00F5DE1C /* LoginSignupViewControllerDelegate.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				6BCB576220D47D42007CF737 /* Storyboards.swift in Sources */,
 				6BCB576A20D48A82007CF737 /* WKWebView+Storage.swift in Sources */,
 				6B1889CA20D5AB660078303F /* Dictionary+Helper.swift in Sources */,
+				6B152A4B20D5EA5B00F5DE1C /* LoginSignupViewControllerDelegate.swift in Sources */,
 				6B152A4720D5E0CD00F5DE1C /* User+DefaultsKeys.swift in Sources */,
 				6BACC3D520D2DE49007D709E /* ARPlantViewController.swift in Sources */,
 				6B6DD91020D5DE4500630943 /* User.swift in Sources */,

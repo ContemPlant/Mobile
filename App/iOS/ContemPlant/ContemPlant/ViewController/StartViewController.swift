@@ -31,9 +31,28 @@ class StartViewController: UIViewController {
 //MARK: - starting the login
 extension StartViewController {
     private func startLoginProcess(forType type: LoginSignupViewController.SupportedLoginType) {
-        let loginNavigationVC = LoginSignupViewController.loginNavigationController(withSupportedLoginType: type)
-        
+        let loginNavigationVC = LoginSignupViewController.loginNavigationController(withSupportedLoginType: type, delegate: self)
         
         self.present(loginNavigationVC, animated: true, completion: nil)
+    }
+}
+
+
+extension StartViewController: LoginSignupViewControllerDelegate {
+    func loginSignupViewControllerLoginFailed(_ viewController: LoginSignupViewController) {
+        //do anything, maybe...
+    }
+    
+    func loginSignupViewControllerLoginCancelled(_ viewController: LoginSignupViewController) {
+        //just dismiss the view controller
+        viewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func loginSignupViewController(_ viewController: LoginSignupViewController, hasLoggedInUser user: User) {
+        //dismiss the view controller
+        viewController.dismiss(animated: true) {
+            //switch to the PlantsViewController by switching to the main NavigationController
+            // TODO:
+        }
     }
 }

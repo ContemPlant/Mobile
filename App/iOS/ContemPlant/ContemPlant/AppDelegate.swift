@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //determine which UI should be shown (depending on whether logged in or not)
         
-        var loggedIn = false // TODO: implement saving session
+        let loggedIn = User.current != nil // TODO: implement saving session
         
         let initialVC: UIViewController
         switch loggedIn {

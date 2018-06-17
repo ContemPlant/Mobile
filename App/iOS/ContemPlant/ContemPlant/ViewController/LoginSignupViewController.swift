@@ -23,6 +23,7 @@ class LoginSignupViewController: UIViewController {
     
     //MARK: instance variables
     private var loginType: SupportedLoginType = .login //default is login
+    var delegate: LoginSignupViewControllerDelegate?
 
     private var endpointURL: URL {
         let base = Constants.webUIEndpointURL
@@ -71,13 +72,18 @@ extension LoginSignupViewController {
         func loginFailed() {
             //something failed, reload
             reloadLoginPage()
+            
+            delegate?.loginSignupViewControllerLoginFailed(self)
         }
         
         func loginSucceeded(withUsername username: String, email: String, jwt: String) {
-            print(email, username, jwt)
+            //finish login (store it)
             
-            // TODO: finish login (store it)
-            self.dismiss(animated: true, completion: nil)
+            //create a new user
+            let newUser = User.login(with: username, email: email, accessToken: jwt)
+
+            //call the appropriate delegate method
+            delegate?.loginSignupViewController(self, hasLoggedInUser: newUser)
         }
         
         enum LoginFields: String {
@@ -136,10 +142,11 @@ extension LoginSignupViewController {
 
 //MARK: - initialization of LoginSignupViewControllers for login/signup
 extension LoginSignupViewController {
-    class func loginNavigationController(withSupportedLoginType loginType: SupportedLoginType) -> UINavigationController {
+    class func loginNavigationController(withSupportedLoginType loginType: SupportedLoginType, delegate delegate: LoginSignupViewControllerDelegate?) -> UINavigationController {
         //load the view controller
         let loginViewController = UIStoryboard.login.instantiateViewController(withIdentifier: "LoginSignupViewController") as! LoginSignupViewController
         loginViewController.loginType = loginType //save the appropriate type
+        loginViewController.delegate = delegate
         
         //embed in navigation controller
         let navigationController = UINavigationController(rootViewController: loginViewController)
@@ -152,7 +159,7 @@ extension LoginSignupViewController {
 //MARK: - dismissal of LoginSignupViewControllers
 extension LoginSignupViewController {
     private func cancelLogin() {
-        self.dismiss(animated: true, completion: nil)
+        self.delegate?.loginSignupViewControllerLoginCancelled(self)
     }
 }
 
