@@ -22,7 +22,6 @@
 		6BBE91DF20D47B1A00546755 /* LoginSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBE91DE20D47B1A00546755 /* LoginSignupViewController.swift */; };
 		6BCB576220D47D42007CF737 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB576120D47D42007CF737 /* Storyboards.swift */; };
 		6BCB576420D47EAD007CF737 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB576320D47EAD007CF737 /* Constants.swift */; };
-		6BCB576620D485A5007CF737 /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BCB576520D485A5007CF737 /* Pacifico-Regular.ttf */; };
 		6BCB576A20D48A82007CF737 /* WKWebView+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB576920D48A82007CF737 /* WKWebView+Storage.swift */; };
 		8F61CD17A0BCD8D5CBFCE1B8 /* Pods_ContemPlantUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF932E4FBF597AFCC932197C /* Pods_ContemPlantUITests.framework */; };
 		EF07CC93BFB3CF44E2D0EE2B /* Pods_ContemPlantTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7C84EED53DE657E5FDE89ED /* Pods_ContemPlantTests.framework */; };
@@ -49,6 +48,8 @@
 		29BD6BA057B39A27CC35DF6F /* Pods-ContemPlant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContemPlant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ContemPlant/Pods-ContemPlant.debug.xcconfig"; sourceTree = "<group>"; };
 		31A71A1491CF75C31B33CD48 /* Pods_ContemPlant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContemPlant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B1889C920D5AB660078303F /* Dictionary+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Helper.swift"; sourceTree = "<group>"; };
+		6B6DD90120D5DCB100630943 /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pacifico-Regular.ttf"; path = "ContemPlant/Ressources/Fonts/Pacifico/Pacifico-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+		6B6DD90320D5DCCD00630943 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		6B9B3B5220D5DB0300959723 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
 		6B9B3B5320D5DB0300959723 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		6B9B3B5420D5DB0400959723 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -76,7 +77,6 @@
 		6BBE91DE20D47B1A00546755 /* LoginSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupViewController.swift; sourceTree = "<group>"; };
 		6BCB576120D47D42007CF737 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		6BCB576320D47EAD007CF737 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		6BCB576520D485A5007CF737 /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 		6BCB576920D48A82007CF737 /* WKWebView+Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+Storage.swift"; sourceTree = "<group>"; };
 		9D3F63C137D14CC74F852925 /* Pods-ContemPlantUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContemPlantUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ContemPlantUITests/Pods-ContemPlantUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7C84EED53DE657E5FDE89ED /* Pods_ContemPlantTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContemPlantTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +134,31 @@
 				6B1889C920D5AB660078303F /* Dictionary+Helper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		6B6DD8FF20D5DC6A00630943 /* Lato */ = {
+			isa = PBXGroup;
+			children = (
+				6B9B3B5520D5DB0400959723 /* Lato-Bold.ttf */,
+				6B9B3B5420D5DB0400959723 /* Lato-BoldItalic.ttf */,
+				6B9B3B5720D5DB0400959723 /* Lato-HairlineItalic.ttf */,
+				6B9B3B5920D5DB0400959723 /* Lato-Italic.ttf */,
+				6B9B3B5820D5DB0400959723 /* Lato-Light.ttf */,
+				6B9B3B5620D5DB0400959723 /* Lato-LightItalic.ttf */,
+				6B9B3B5320D5DB0300959723 /* Lato-Regular.ttf */,
+				6B9B3B5220D5DB0300959723 /* Lato-BlackItalic.ttf */,
+				6B6DD90320D5DCCD00630943 /* Lato-Black.ttf */,
+			);
+			path = Lato;
+			sourceTree = "<group>";
+		};
+		6B6DD90020D5DC7900630943 /* Pacifico */ = {
+			isa = PBXGroup;
+			children = (
+				6B6DD90120D5DCB100630943 /* Pacifico-Regular.ttf */,
+			);
+			name = Pacifico;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		6BACC3C420D2DE49007D709E = {
@@ -225,15 +250,8 @@
 		6BCB576720D485AF007CF737 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				6BCB576520D485A5007CF737 /* Pacifico-Regular.ttf */,
-				6B9B3B5220D5DB0300959723 /* Lato-BlackItalic.ttf */,
-				6B9B3B5520D5DB0400959723 /* Lato-Bold.ttf */,
-				6B9B3B5420D5DB0400959723 /* Lato-BoldItalic.ttf */,
-				6B9B3B5720D5DB0400959723 /* Lato-HairlineItalic.ttf */,
-				6B9B3B5920D5DB0400959723 /* Lato-Italic.ttf */,
-				6B9B3B5820D5DB0400959723 /* Lato-Light.ttf */,
-				6B9B3B5620D5DB0400959723 /* Lato-LightItalic.ttf */,
-				6B9B3B5320D5DB0300959723 /* Lato-Regular.ttf */,
+				6B6DD90020D5DC7900630943 /* Pacifico */,
+				6B6DD8FF20D5DC6A00630943 /* Lato */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -367,7 +385,6 @@
 				6BACC3DD20D2DE4A007D709E /* LaunchScreen.storyboard in Resources */,
 				6BACC3DA20D2DE4A007D709E /* Assets.xcassets in Resources */,
 				6BBE91D720D476EC00546755 /* Login.storyboard in Resources */,
-				6BCB576620D485A5007CF737 /* Pacifico-Regular.ttf in Resources */,
 				6BACC3D820D2DE49007D709E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
