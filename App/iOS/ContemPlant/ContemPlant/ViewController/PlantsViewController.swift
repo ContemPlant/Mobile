@@ -18,6 +18,9 @@ class PlantsViewController: UIViewController {
         return plantsNavigationController.user
     }
     
+    //MARK: - outlets
+    @IBOutlet var tableView: UITableView!
+    
     //MARK: - actions
     @IBAction func logoutBarButtonItemTapped(_ sender: UIBarButtonItem) {
         //just logout the user
@@ -27,6 +30,9 @@ class PlantsViewController: UIViewController {
         AppDelegate.current.changeRootViewController(basedOnLoggedInUser: nil, animated: true, completion: nil)
     }
     
+    //MARK: - plants fetching/handling
+    
+    
     
     //MARK: - view lifecycle
     override func viewDidLoad() {
@@ -34,6 +40,8 @@ class PlantsViewController: UIViewController {
         
         // any further additional setup after loading the view...
         // ...
+        
+        user.startPlantFetching()
     }
     
 
@@ -47,4 +55,23 @@ class PlantsViewController: UIViewController {
     }
     */
 
+}
+
+//MARK: - TableView
+extension PlantsViewController: UITableViewDelegate {
+    
+}
+
+extension PlantsViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1 //just one section at the moment
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0 //plants.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyUserDefaults
+import Apollo
 
 final class User: Codable {
     let username: String
@@ -21,6 +22,33 @@ final class User: Codable {
         self.email = email
         self.jwt = jwt
     }
+    
+    //determine what to save
+    private enum CodingKeys: String, CodingKey {
+        case username
+        case email
+        case jwt
+        case loggedIn
+    }
+    
+    //MARK: - Apollo Server client / server connection
+    lazy var apollo: ApolloClient = { [unowned self] in
+        let configuration = URLSessionConfiguration.default
+        // Add additional headers as needed
+        configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(self.jwt)"]
+        
+        let url = Constants.graphQlEndpointURL
+        
+        return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
+    }()
+    
+    
+    func startPlantFetching() {
+        apollo.fetch(query: PlantsQuery(), cachePolicy: .returnCacheDataElseFetch) { (result, error) in
+            print(String(describing:result?.data?.plants))
+        }
+    }
+    var plants: [PlantsQuery.Data.Plant] = []
 }
 
 //MARK: - logout

@@ -41,6 +41,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="dNR-1P-pzh" id="HCe-XU-VEU"/>
+                                    <outlet property="delegate" destination="dNR-1P-pzh" id="9om-PZ-xkz"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -59,6 +63,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Dv7-zH-eFK" id="AiW-gz-bTZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgZ-QZ-4Yl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
