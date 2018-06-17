@@ -142,7 +142,7 @@ extension LoginSignupViewController {
 
 //MARK: - initialization of LoginSignupViewControllers for login/signup
 extension LoginSignupViewController {
-    class func loginNavigationController(withSupportedLoginType loginType: SupportedLoginType, delegate delegate: LoginSignupViewControllerDelegate?) -> UINavigationController {
+    class func loginNavigationController(withSupportedLoginType loginType: SupportedLoginType, delegate: LoginSignupViewControllerDelegate?) -> UINavigationController {
         //load the view controller
         let loginViewController = UIStoryboard.login.instantiateViewController(withIdentifier: "LoginSignupViewController") as! LoginSignupViewController
         loginViewController.loginType = loginType //save the appropriate type
