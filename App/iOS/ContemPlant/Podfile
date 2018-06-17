@@ -6,6 +6,7 @@ target 'ContemPlant' do
   use_frameworks!
 
   # Pods for ContemPlant
+  pod 'SwiftyUserDefaults', '4.0.0-alpha.1'
 
   target 'ContemPlantTests' do
     inherit! :search_paths

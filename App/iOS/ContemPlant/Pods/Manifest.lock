@@ -1,3 +1,16 @@
-PODFILE CHECKSUM: c9e192b6c94f3c63469659302ea5acf0bbc44917
+PODS:
+  - SwiftyUserDefaults (4.0.0-alpha.1)
+
+DEPENDENCIES:
+  - SwiftyUserDefaults (= 4.0.0-alpha.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SwiftyUserDefaults
+
+SPEC CHECKSUMS:
+  SwiftyUserDefaults: cebe0ff9472f52699772a514b6f7155861d8069b
+
+PODFILE CHECKSUM: b5e7a7ae4a948c7d433d098605ac52e36dc36645
 
 COCOAPODS: 1.5.3
