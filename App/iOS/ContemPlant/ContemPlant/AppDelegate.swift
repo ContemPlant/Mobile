@@ -17,12 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //determine which UI should be shown (depending on whether logged in or not)
         
-        let loggedIn = User.current != nil // TODO: implement saving session
-        
-        let initialVC = getInitialViewControllerInstance(ifLoggedIn: loggedIn)
+        let currentUser = User.current
         
         //change root view controller
-        changeRootViewController(basedOnLoggedIn: loggedIn, animated: false, completion: nil)
+        changeRootViewController(basedOnLoggedInUser: currentUser, animated: false, completion: nil)
         
         return true
     }
@@ -53,22 +51,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //MARK: - determine ViewController after Application launch
 extension AppDelegate {
-    func getInitialViewControllerInstance(ifLoggedIn loggedIn: Bool) -> UIViewController {
-        if loggedIn {
-            return UIStoryboard.plantsLearning.instantiateInitialViewController()!
+    func getInitialViewControllerInstance(forLoggedInUser loggedInUser: User?) -> UIViewController {
+        if let loggedInUser = loggedInUser, loggedInUser.loggedIn {
+            let plantsNC = UIStoryboard.plantsLearning.instantiateInitialViewController()! as! PlantsNavigationController
+            plantsNC.user = loggedInUser
+            
+            return plantsNC
         }
         else {
             return UIStoryboard.login.instantiateInitialViewController()!
         }
     }
     
-    func changeRootViewController(basedOnLoggedIn loggedIn: Bool, animated: Bool, completion: ((_ completed: Bool) -> Void)?) {
+    func changeRootViewController(basedOnLoggedInUser loggedInUser: User?, animated: Bool, completion: ((_ completed: Bool) -> Void)?) {
         //make sure, window is not nil, otherwise there's nothing to transition
         guard let window = window else {
             fatalError("Should not happen, to be honest...")
         }
         
-        let newRootViewController = getInitialViewControllerInstance(ifLoggedIn: loggedIn)
+        let loggedIn = loggedInUser != nil && loggedInUser!.loggedIn
+        
+        let newRootViewController = getInitialViewControllerInstance(forLoggedInUser: loggedInUser)
         
         //not animated
         guard animated else {

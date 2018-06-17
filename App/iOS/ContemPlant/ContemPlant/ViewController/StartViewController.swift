@@ -52,7 +52,7 @@ extension StartViewController: LoginSignupViewControllerDelegate {
         //dismiss the view controller
         viewController.dismiss(animated: true) {
             //switch to the PlantsViewController by switching to the main NavigationController
-            AppDelegate.current.changeRootViewController(basedOnLoggedIn: true, animated: true, completion: nil)
+            AppDelegate.current.changeRootViewController(basedOnLoggedInUser: user, animated: true, completion: nil)
         }
     }
 }

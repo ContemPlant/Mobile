@@ -20,7 +20,7 @@
         <!--Plants-->
         <scene sceneID="Cgh-Jy-Y84">
             <objects>
-                <viewController id="dNR-1P-pzh" sceneMemberID="viewController">
+                <viewController id="dNR-1P-pzh" customClass="PlantsViewController" customModule="ContemPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wxn-J2-Bv7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,7 +53,11 @@
                         <viewLayoutGuide key="safeArea" id="YLn-tm-OMR"/>
                     </view>
                     <navigationItem key="navigationItem" title="Plants" id="8ze-qO-qEI">
-                        <barButtonItem key="leftBarButtonItem" title="logout" id="IGp-YO-lk3"/>
+                        <barButtonItem key="leftBarButtonItem" title="logout" id="IGp-YO-lk3">
+                            <connections>
+                                <action selector="logoutBarButtonItemTapped:" destination="dNR-1P-pzh" id="5TY-pn-K9X"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgZ-QZ-4Yl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -130,10 +134,10 @@
             </objects>
             <point key="canvasLocation" x="394" y="-437"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Plants Navigation Controller-->
         <scene sceneID="vaa-Qm-uf2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZbE-yS-fOK" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZbE-yS-fOK" customClass="PlantsNavigationController" customModule="ContemPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ro2-ey-HB4">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
