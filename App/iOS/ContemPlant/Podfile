@@ -7,7 +7,7 @@ target 'ContemPlant' do
 
   # Pods for ContemPlant
   pod 'SwiftyUserDefaults', '4.0.0-alpha.1'
-  pod 'Apollo'
+  pod 'Apollo', :git => 'https://github.com/apollographql/apollo-ios.git', :branch => 'master'
 
   target 'ContemPlantTests' do
     inherit! :search_paths

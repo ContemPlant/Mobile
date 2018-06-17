@@ -5,18 +5,27 @@ PODS:
   - SwiftyUserDefaults (4.0.0-alpha.1)
 
 DEPENDENCIES:
-  - Apollo
+  - Apollo (from `https://github.com/apollographql/apollo-ios.git`, branch `master`)
   - SwiftyUserDefaults (= 4.0.0-alpha.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Apollo
     - SwiftyUserDefaults
 
+EXTERNAL SOURCES:
+  Apollo:
+    :branch: master
+    :git: https://github.com/apollographql/apollo-ios.git
+
+CHECKOUT OPTIONS:
+  Apollo:
+    :commit: 75b83a915ab7be252961b9b3a91fa9c26e63c135
+    :git: https://github.com/apollographql/apollo-ios.git
+
 SPEC CHECKSUMS:
-  Apollo: 66e0f52289551545adb7ecdd994e713fdbae26eb
+  Apollo: 3bf05b80c97fafc6f4b439ea5aba41729359d9d6
   SwiftyUserDefaults: cebe0ff9472f52699772a514b6f7155861d8069b
 
-PODFILE CHECKSUM: b3729e4c69ad5a3353a7559901ec4bd2377756e2
+PODFILE CHECKSUM: 85d34842d2ad49e11cf1312a0fc47ccd6e050f58
 
 COCOAPODS: 1.5.3
