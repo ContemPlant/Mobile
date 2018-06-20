@@ -9,8 +9,8 @@
 import Foundation
 
 enum Constants {
-    static let defaultProtocol = "http"
-    static let serverIP = "167.99.240.197" // "geros-macbook-pro-2.local" //
+    static let defaultProtocol = "ws"
+    static let serverIP = "geros-macbook-pro-2.local" //"167.99.240.197" 
     
     static let serverURLString = "\(defaultProtocol)://\(serverIP)"
     static let serverURL = URL(string: serverURLString)!
@@ -24,6 +24,6 @@ enum Constants {
         return URL(string: subscriptionsEndpointURLString)!
     }
     
-    static var webUIEndpointURLString = "\(defaultProtocol)://\(serverIP):3000"
+    static var webUIEndpointURLString = "http://\(serverIP):3000"
     static var webUIEndpointURL = URL(string: webUIEndpointURLString)!
 }
