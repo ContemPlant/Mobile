@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyUserDefaults
 import Apollo
+import SortedArray
 
 final class User: Codable {
     let username: String
@@ -37,18 +38,24 @@ final class User: Codable {
         // Add additional headers as needed
         configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(self.jwt)"]
         
-        let url = Constants.graphQlEndpointURL
+        let url = Constants.subscriptionsEnpointURL
         
-        return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
+        let websocketTransport = WebSocketTransport(url: url,
+                                                    sendOperationIdentifiers: false,
+                                                    params: nil,
+                                                    connectingParams: ["Authorization": "Bearer \(self.jwt)"]) //give authentication parameters!
+        
+        return ApolloClient(networkTransport: websocketTransport)
     }()
     
-    
-    func startPlantFetching() {
-        apollo.fetch(query: PlantsQuery(), cachePolicy: .returnCacheDataElseFetch) { (result, error) in
-            print(String(describing:result?.data?.plants))
-        }
+    var plants: SortedArray<Plant> {
+        return plantController.plants
     }
-    var plants: [PlantsQuery.Data.Plant] = []
+    
+    lazy var plantController: UserPlantController = { [unowned self] in
+        return UserPlantController(withApolloClient: apollo)
+    }()
+   
 }
 
 //MARK: - logout
