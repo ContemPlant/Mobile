@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JdenticonSwift
 
 class PlantsViewController: UIViewController {
 
@@ -48,6 +49,14 @@ class PlantsViewController: UIViewController {
         setupPlantsControllerObservers()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let selectedRowIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedRowIndexPath, animated: animated)
+        }
+    }
+    
 
     /*
     // MARK: - Navigation
@@ -76,10 +85,15 @@ extension PlantsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell() //tableView.dequeueReusableCell(withIdentifier: "PlantTableViewCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PlantTableViewCell")! as! PlantTableViewCell
         
-        cell.textLabel?.text = user.plants[indexPath.row].name
+        let plant = user.plants[indexPath.row]
         
+        cell.textLabel?.text = plant.name
+        cell.imageView?.image = (try? Jdenticon(from: "öjlasdfjölaksdjfölaskjd").image(with: cell.imageView!.frame.size.width) ) ?? (#imageLiteral(resourceName: "Icons/Logo+Schriftzug.pdf"))
+        cell.jdenticonWebView.loadJdenticon(forValue: plant.id)
+        print(cell.jdenticonWebView)
+        print(plant.id)
         return cell
     }
 }

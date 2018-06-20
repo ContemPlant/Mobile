@@ -18,6 +18,11 @@
 		6B212DBF20D6B13400A41C1C /* Plants.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 6B212DBE20D6B13400A41C1C /* Plants.graphql */; };
 		6B212DC120D6B19B00A41C1C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B212DC020D6B19B00A41C1C /* API.swift */; };
 		6B212DC320D6B25F00A41C1C /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B212DC220D6B25800A41C1C /* Pacifico-Regular.ttf */; };
+		6B4374FD20DAF0BA008AF897 /* PlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4374FC20DAF0BA008AF897 /* PlantTableViewCell.swift */; };
+		6B4374FF20DAF4EF008AF897 /* Jdenticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4374FE20DAF4EF008AF897 /* Jdenticon.swift */; };
+		6B43750120DAFC22008AF897 /* JdenticonWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B43750020DAFC22008AF897 /* JdenticonWebView.swift */; };
+		6B43750520DAFC8D008AF897 /* jdenticon.html in Resources */ = {isa = PBXBuildFile; fileRef = 6B43750320DAFC8D008AF897 /* jdenticon.html */; };
+		6B43750620DAFC8D008AF897 /* jdenticon@2.1.0.js in Resources */ = {isa = PBXBuildFile; fileRef = 6B43750420DAFC8D008AF897 /* jdenticon@2.1.0.js */; };
 		6B5D384E20D71345004FF4B2 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 6B5D384D20D71345004FF4B2 /* schema.json */; };
 		6B6DD90520D5DD5D00630943 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B3B5520D5DB0400959723 /* Lato-Bold.ttf */; };
 		6B6DD90620D5DD5D00630943 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B3B5420D5DB0400959723 /* Lato-BoldItalic.ttf */; };
@@ -78,6 +83,11 @@
 		6B212DBE20D6B13400A41C1C /* Plants.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Plants.graphql; sourceTree = "<group>"; };
 		6B212DC020D6B19B00A41C1C /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = ContemPlant/API.swift; sourceTree = SOURCE_ROOT; };
 		6B212DC220D6B25800A41C1C /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pacifico-Regular.ttf"; path = "ContemPlant/Resources/Fonts/Pacifico/Pacifico-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+		6B4374FC20DAF0BA008AF897 /* PlantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantTableViewCell.swift; sourceTree = "<group>"; };
+		6B4374FE20DAF4EF008AF897 /* Jdenticon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jdenticon.swift; sourceTree = "<group>"; };
+		6B43750020DAFC22008AF897 /* JdenticonWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JdenticonWebView.swift; sourceTree = "<group>"; };
+		6B43750320DAFC8D008AF897 /* jdenticon.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = jdenticon.html; path = ../../../../Jdenticons/jdenticon.html; sourceTree = "<group>"; };
+		6B43750420DAFC8D008AF897 /* jdenticon@2.1.0.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "jdenticon@2.1.0.js"; path = "../../../../Jdenticons/jdenticon@2.1.0.js"; sourceTree = "<group>"; };
 		6B5D384A20D71293004FF4B2 /* SchemaUpdateHints.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SchemaUpdateHints.md; sourceTree = "<group>"; };
 		6B5D384D20D71345004FF4B2 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		6B6DD90320D5DCCD00630943 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
@@ -165,8 +175,20 @@
 			isa = PBXGroup;
 			children = (
 				6B1889C920D5AB660078303F /* Dictionary+Helper.swift */,
+				6B4374FE20DAF4EF008AF897 /* Jdenticon.swift */,
+				6B43750220DAFC6A008AF897 /* Jdenticon */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		6B43750220DAFC6A008AF897 /* Jdenticon */ = {
+			isa = PBXGroup;
+			children = (
+				6B43750020DAFC22008AF897 /* JdenticonWebView.swift */,
+				6B43750320DAFC8D008AF897 /* jdenticon.html */,
+				6B43750420DAFC8D008AF897 /* jdenticon@2.1.0.js */,
+			);
+			path = Jdenticon;
 			sourceTree = "<group>";
 		};
 		6B6DD8FF20D5DC6A00630943 /* Lato */ = {
@@ -304,6 +326,7 @@
 				6B152A4A20D5EA5A00F5DE1C /* LoginSignupViewControllerDelegate.swift */,
 				6B152A5020D6A0B400F5DE1C /* PlantsNavigationController.swift */,
 				6B152A4E20D69BDA00F5DE1C /* PlantsViewController.swift */,
+				6B4374FC20DAF0BA008AF897 /* PlantTableViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -446,11 +469,13 @@
 			files = (
 				6B212DC320D6B25F00A41C1C /* Pacifico-Regular.ttf in Resources */,
 				6B212DBF20D6B13400A41C1C /* Plants.graphql in Resources */,
+				6B43750620DAFC8D008AF897 /* jdenticon@2.1.0.js in Resources */,
 				6B6DD90520D5DD5D00630943 /* Lato-Bold.ttf in Resources */,
 				6B6DD90620D5DD5D00630943 /* Lato-BoldItalic.ttf in Resources */,
 				6B152A4D20D5F07000F5DE1C /* LearningCompletionAR.storyboard in Resources */,
 				6B6DD90720D5DD5D00630943 /* Lato-HairlineItalic.ttf in Resources */,
 				6B6DD90820D5DD5D00630943 /* Lato-Italic.ttf in Resources */,
+				6B43750520DAFC8D008AF897 /* jdenticon.html in Resources */,
 				6B6DD90920D5DD5D00630943 /* Lato-Light.ttf in Resources */,
 				6B6DD90A20D5DD5D00630943 /* Lato-LightItalic.ttf in Resources */,
 				6B6DD90B20D5DD5D00630943 /* Lato-Regular.ttf in Resources */,
@@ -589,10 +614,13 @@
 				6BCB576220D47D42007CF737 /* Storyboards.swift in Sources */,
 				6BCB576A20D48A82007CF737 /* WKWebView+Storage.swift in Sources */,
 				6B1889CA20D5AB660078303F /* Dictionary+Helper.swift in Sources */,
+				6B4374FF20DAF4EF008AF897 /* Jdenticon.swift in Sources */,
 				6B152A4B20D5EA5B00F5DE1C /* LoginSignupViewControllerDelegate.swift in Sources */,
+				6B4374FD20DAF0BA008AF897 /* PlantTableViewCell.swift in Sources */,
 				6B152A4720D5E0CD00F5DE1C /* User+DefaultsKeys.swift in Sources */,
 				6B212DC120D6B19B00A41C1C /* API.swift in Sources */,
 				6BACC3D520D2DE49007D709E /* ARPlantViewController.swift in Sources */,
+				6B43750120DAFC22008AF897 /* JdenticonWebView.swift in Sources */,
 				6BC0B27520DACC79009166C2 /* User+Plants.swift in Sources */,
 				6B6DD91020D5DE4500630943 /* User.swift in Sources */,
 				6BACC3D120D2DE49007D709E /* AppDelegate.swift in Sources */,

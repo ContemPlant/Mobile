@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Lato-Light.ttf">
+            <string>Lato-Light</string>
+        </array>
         <array key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
         </array>
@@ -25,18 +28,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dv7-zH-eFK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="115" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dv7-zH-eFK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2g4-8N-5jZ">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlantTableViewCell" rowHeight="115" id="2g4-8N-5jZ" customClass="PlantTableViewCell" customModule="ContemPlant" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2g4-8N-5jZ" id="9tL-Io-bMk">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="114.66666666666667"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons/Logo+Lettering" translatesAutoresizingMaskIntoConstraints="NO" id="SYE-uZ-jNG">
+                                                    <rect key="frame" x="15" y="7.3333333333333357" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="cSp-ub-ajL"/>
+                                                        <constraint firstAttribute="width" constant="100" id="jbV-L7-MWc"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qUU-gW-5Md">
+                                                    <rect key="frame" x="123" y="21" width="222" height="73"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unbekannter Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1M-Or-RK5">
+                                                            <rect key="frame" x="0.0" y="0.0" width="215.33333333333334" height="30.333333333333332"/>
+                                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="25"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Cgr-mc-veK">
+                                                            <rect key="frame" x="0.0" y="38.333333333333336" width="222" height="2"/>
+                                                        </progressView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Health: 999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0h-u8-HmC">
+                                                            <rect key="frame" x="0.0" y="48.333333333333329" width="101.33333333333333" height="24.666666666666671"/>
+                                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="tintColor" red="0.16862745100000001" green="0.74901960779999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="Cgr-mc-veK" secondAttribute="trailing" id="2AI-VH-cge"/>
+                                                        <constraint firstItem="Cgr-mc-veK" firstAttribute="leading" secondItem="qUU-gW-5Md" secondAttribute="leading" id="As3-bS-jEC"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qc8-m7-Q72" customClass="JdenticonWebView" customModule="ContemPlant" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="7.3333333333333357" width="100" height="100"/>
+                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="mgH-Dq-8EP"/>
+                                                        <constraint firstAttribute="height" constant="100" id="npL-06-cXV"/>
+                                                    </constraints>
+                                                    <wkWebViewConfiguration key="configuration">
+                                                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                        <wkPreferences key="preferences"/>
+                                                    </wkWebViewConfiguration>
+                                                </wkWebView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SYE-uZ-jNG" firstAttribute="centerY" secondItem="9tL-Io-bMk" secondAttribute="centerY" id="374-gc-Th9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="qUU-gW-5Md" secondAttribute="trailing" constant="15" id="9Mh-sS-dYI"/>
+                                                <constraint firstItem="qUU-gW-5Md" firstAttribute="top" secondItem="9tL-Io-bMk" secondAttribute="topMargin" constant="10" id="E0L-lE-6Xw"/>
+                                                <constraint firstItem="SYE-uZ-jNG" firstAttribute="leading" secondItem="9tL-Io-bMk" secondAttribute="leading" constant="15" id="FSO-wt-hpe"/>
+                                                <constraint firstItem="qc8-m7-Q72" firstAttribute="top" secondItem="9tL-Io-bMk" secondAttribute="top" constant="7.3300000000000001" id="Tn5-Jx-7zc"/>
+                                                <constraint firstItem="qUU-gW-5Md" firstAttribute="leading" secondItem="SYE-uZ-jNG" secondAttribute="trailing" constant="8" id="YYg-YC-liY"/>
+                                                <constraint firstItem="qc8-m7-Q72" firstAttribute="leading" secondItem="9tL-Io-bMk" secondAttribute="leading" constant="15" id="aRd-wi-vq1"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="qUU-gW-5Md" secondAttribute="bottom" constant="10" id="bIj-hj-E6I"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="detailLabel" destination="M0h-u8-HmC" id="bau-ek-H8g"/>
+                                            <outlet property="healthIndicatorLabel" destination="Cgr-mc-veK" id="3vw-nS-gsR"/>
+                                            <outlet property="jdenticonImageView" destination="SYE-uZ-jNG" id="i5m-dr-tOq"/>
+                                            <outlet property="jdenticonWebView" destination="qc8-m7-Q72" id="WD6-eO-Z3w"/>
+                                            <outlet property="plantNameLabel" destination="G1M-Or-RK5" id="wOi-HB-j9J"/>
                                             <segue destination="uiW-Bo-ODl" kind="show" id="dY8-81-2bg"/>
                                         </connections>
                                     </tableViewCell>
@@ -160,4 +224,7 @@
             <point key="canvasLocation" x="-2346.4000000000001" y="-436.69950738916259"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Icons/Logo+Lettering" width="500" height="500"/>
+    </resources>
 </document>
