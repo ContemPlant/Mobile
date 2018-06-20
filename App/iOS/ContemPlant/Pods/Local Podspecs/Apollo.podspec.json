@@ -1,6 +1,6 @@
 {
   "name": "Apollo",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "authors": "Meteor Development Group",
   "homepage": "https://github.com/apollographql/apollo-ios",
   "license": {
@@ -10,10 +10,14 @@
   "summary": "A GraphQL client for iOS, written in Swift.",
   "source": {
     "git": "https://github.com/apollographql/apollo-ios.git",
-    "tag": "0.8.0"
+    "branch": "master"
   },
   "requires_arc": true,
-  "default_subspecs": "Core",
+  "default_subspecs": [
+    "Core",
+    "SQLite",
+    "WebSocket"
+  ],
   "platforms": {
     "ios": "9.0",
     "osx": "10.10",

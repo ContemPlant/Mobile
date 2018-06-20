@@ -18,6 +18,7 @@
 		6B212DBF20D6B13400A41C1C /* Plants.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 6B212DBE20D6B13400A41C1C /* Plants.graphql */; };
 		6B212DC120D6B19B00A41C1C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B212DC020D6B19B00A41C1C /* API.swift */; };
 		6B212DC320D6B25F00A41C1C /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B212DC220D6B25800A41C1C /* Pacifico-Regular.ttf */; };
+		6B5D384E20D71345004FF4B2 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 6B5D384D20D71345004FF4B2 /* schema.json */; };
 		6B6DD90520D5DD5D00630943 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B3B5520D5DB0400959723 /* Lato-Bold.ttf */; };
 		6B6DD90620D5DD5D00630943 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B3B5420D5DB0400959723 /* Lato-BoldItalic.ttf */; };
 		6B6DD90720D5DD5D00630943 /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B3B5720D5DB0400959723 /* Lato-HairlineItalic.ttf */; };
@@ -28,7 +29,6 @@
 		6B6DD90C20D5DD5D00630943 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B3B5220D5DB0300959723 /* Lato-BlackItalic.ttf */; };
 		6B6DD90D20D5DD5D00630943 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6DD90320D5DCCD00630943 /* Lato-Black.ttf */; };
 		6B6DD91020D5DE4500630943 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DD90F20D5DE4500630943 /* User.swift */; };
-		6BA1161A20D6AB71006C4C14 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 6BA1161920D6AB71006C4C14 /* schema.json */; };
 		6BACC3D120D2DE49007D709E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BACC3D020D2DE49007D709E /* AppDelegate.swift */; };
 		6BACC3D320D2DE49007D709E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BACC3D220D2DE49007D709E /* art.scnassets */; };
 		6BACC3D520D2DE49007D709E /* ARPlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BACC3D420D2DE49007D709E /* ARPlantViewController.swift */; };
@@ -77,6 +77,8 @@
 		6B212DBE20D6B13400A41C1C /* Plants.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Plants.graphql; sourceTree = "<group>"; };
 		6B212DC020D6B19B00A41C1C /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = ContemPlant/API.swift; sourceTree = SOURCE_ROOT; };
 		6B212DC220D6B25800A41C1C /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pacifico-Regular.ttf"; path = "ContemPlant/Resources/Fonts/Pacifico/Pacifico-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+		6B5D384A20D71293004FF4B2 /* SchemaUpdateHints.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SchemaUpdateHints.md; sourceTree = "<group>"; };
+		6B5D384D20D71345004FF4B2 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		6B6DD90320D5DCCD00630943 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		6B6DD90F20D5DE4500630943 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6B9B3B5220D5DB0300959723 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -87,7 +89,6 @@
 		6B9B3B5720D5DB0400959723 /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HairlineItalic.ttf"; sourceTree = "<group>"; };
 		6B9B3B5820D5DB0400959723 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		6B9B3B5920D5DB0400959723 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
-		6BA1161920D6AB71006C4C14 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		6BACC3CD20D2DE49007D709E /* ContemPlant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContemPlant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BACC3D020D2DE49007D709E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BACC3D220D2DE49007D709E /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -203,7 +204,8 @@
 		6B81595F20D6A6D900F6B635 /* GraphQLServer */ = {
 			isa = PBXGroup;
 			children = (
-				6BA1161920D6AB71006C4C14 /* schema.json */,
+				6B5D384A20D71293004FF4B2 /* SchemaUpdateHints.md */,
+				6B5D384D20D71345004FF4B2 /* schema.json */,
 				6B212DC020D6B19B00A41C1C /* API.swift */,
 				6B212DBE20D6B13400A41C1C /* Plants.graphql */,
 			);
@@ -449,7 +451,7 @@
 				6B6DD90920D5DD5D00630943 /* Lato-Light.ttf in Resources */,
 				6B6DD90A20D5DD5D00630943 /* Lato-LightItalic.ttf in Resources */,
 				6B6DD90B20D5DD5D00630943 /* Lato-Regular.ttf in Resources */,
-				6BA1161A20D6AB71006C4C14 /* schema.json in Resources */,
+				6B5D384E20D71345004FF4B2 /* schema.json in Resources */,
 				6B6DD90C20D5DD5D00630943 /* Lato-BlackItalic.ttf in Resources */,
 				6B6DD90D20D5DD5D00630943 /* Lato-Black.ttf in Resources */,
 				6BACC3D320D2DE49007D709E /* art.scnassets in Resources */,
@@ -503,11 +505,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ContemPlant/Pods-ContemPlant-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,13 +544,9 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 			);
 			name = "Generate Apollo GraphQL API";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

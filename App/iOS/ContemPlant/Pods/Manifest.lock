@@ -1,31 +1,46 @@
 PODS:
-  - Apollo (0.8.0):
-    - Apollo/Core (= 0.8.0)
-  - Apollo/Core (0.8.0)
+  - Apollo (0.9.0):
+    - Apollo/Core (= 0.9.0)
+    - Apollo/SQLite (= 0.9.0)
+    - Apollo/WebSocket (= 0.9.0)
+  - Apollo/Core (0.9.0)
+  - Apollo/SQLite (0.9.0):
+    - Apollo/Core
+    - SQLite.swift (~> 0.11.4)
+  - Apollo/WebSocket (0.9.0):
+    - Apollo/Core
+    - Starscream (~> 3.0.2)
+  - SQLite.swift (0.11.5):
+    - SQLite.swift/standard (= 0.11.5)
+  - SQLite.swift/standard (0.11.5)
+  - Starscream (3.0.5)
   - SwiftyUserDefaults (4.0.0-alpha.1)
 
 DEPENDENCIES:
-  - Apollo (from `https://github.com/apollographql/apollo-ios.git`, branch `master`)
+  - Apollo (from `custom-podspec/Apollo.podspec`)
   - SwiftyUserDefaults (= 4.0.0-alpha.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - SQLite.swift
+    - Starscream
     - SwiftyUserDefaults
 
 EXTERNAL SOURCES:
   Apollo:
-    :branch: master
-    :git: https://github.com/apollographql/apollo-ios.git
+    :podspec: custom-podspec/Apollo.podspec
 
 CHECKOUT OPTIONS:
   Apollo:
-    :commit: 75b83a915ab7be252961b9b3a91fa9c26e63c135
+    :commit: dd096a1b875eb365787bfed563ff9c64a4e0f466
     :git: https://github.com/apollographql/apollo-ios.git
 
 SPEC CHECKSUMS:
-  Apollo: 3bf05b80c97fafc6f4b439ea5aba41729359d9d6
+  Apollo: 1989fd87f1389f1a07e70cc46b3420acf96d9f62
+  SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
+  Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SwiftyUserDefaults: cebe0ff9472f52699772a514b6f7155861d8069b
 
-PODFILE CHECKSUM: 85d34842d2ad49e11cf1312a0fc47ccd6e050f58
+PODFILE CHECKSUM: 5a0948dc9f51f56dbff24bbc9da1b5f502cf449b
 
 COCOAPODS: 1.5.3
