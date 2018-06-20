@@ -41,7 +41,11 @@ class PlantsViewController: UIViewController {
         // any further additional setup after loading the view...
         // ...
         
-        user.startPlantFetching()
+        user.plantController.resetAndFetchPlants()
+        
+        
+        //setup plant observers
+        setupPlantsControllerObservers()
     }
     
 
@@ -68,10 +72,38 @@ extension PlantsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0 //plants.count
+        return user.plants.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = UITableViewCell() //tableView.dequeueReusableCell(withIdentifier: "PlantTableViewCell")!
+        
+        cell.textLabel?.text = user.plants[indexPath.row].name
+        
+        return cell
+    }
+}
+
+extension PlantsViewController {
+    private func indexPath(forIndex rowIndex: Int) -> IndexPath {
+        return IndexPath(row: rowIndex, section: 0)
+    }
+    
+    func setupPlantsControllerObservers() {
+        self.user.plantController.plantUpdateBeganHandler = { [weak self] in
+            self?.tableView.beginUpdates()
+        }
+        
+        self.user.plantController.plantUpdateFinishedHandler = { [weak self] in
+            self?.tableView.endUpdates()
+        }
+        
+        self.user.plantController.plantUpdateAddedPlantHandler = { [weak self] (_, index) in
+            self?.tableView.insertRows(at: [self!.indexPath(forIndex: index)], with: .automatic)
+        }
+        
+        self.user.plantController.plantUpdateRemovedPlantHandler = { [weak self] (_, index) in
+            self?.tableView.deleteRows(at: [self!.indexPath(forIndex: index)], with: .automatic)
+        }
     }
 }
