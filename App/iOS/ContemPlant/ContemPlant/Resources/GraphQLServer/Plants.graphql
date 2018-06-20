@@ -1,7 +1,20 @@
 # First query (because at least one graphql-file is required so that apollo-codegen will work!!!!!)
 query Plants {
     plants {
-        id
-        name
+        ...BasicPlantDetails
     }
+}
+
+subscription NewPlants {
+    newPlant {
+        mutation
+        node {
+            ...BasicPlantDetails
+        }
+    }
+}
+
+fragment BasicPlantDetails on Plant {
+    id
+    name
 }
