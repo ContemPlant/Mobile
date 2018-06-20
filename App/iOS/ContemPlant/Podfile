@@ -9,6 +9,7 @@ target 'ContemPlant' do
   pod 'SwiftyUserDefaults', '4.0.0-alpha.1'
   pod 'Apollo', :podspec => 'custom-podspec/Apollo.podspec'
   pod 'SortedArray', :podspec => 'custom-podspec/SortedArray.podspec'
+  pod 'JdenticonSwift', :podspec => 'custom-podspec/JdenticonSwift.podspec'
 
   target 'ContemPlantTests' do
     inherit! :search_paths
