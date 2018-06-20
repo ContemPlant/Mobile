@@ -9,7 +9,8 @@ subscription NewPlants {
     newPlant {
         mutation
         node {
-            ...BasicPlantDetails
+            id
+            name
         }
     }
 }
