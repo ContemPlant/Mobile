@@ -11,6 +11,7 @@ PODS:
     - Apollo/Core
     - Starscream (~> 3.0.2)
   - GPUImage (0.1.7)
+  - ImageDetect (1.1.2)
   - JdenticonSwift (1.0)
   - SortedArray (1.0)
   - SQLite.swift (0.11.5):
@@ -23,6 +24,7 @@ PODS:
 
 DEPENDENCIES:
   - Apollo (from `custom-podspec/Apollo.podspec`)
+  - ImageDetect
   - JdenticonSwift (from `custom-podspec/JdenticonSwift.podspec`)
   - SortedArray (from `custom-podspec/SortedArray.podspec`)
   - SwiftOCR
@@ -31,6 +33,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - GPUImage
+    - ImageDetect
     - SQLite.swift
     - Starscream
     - SwiftOCR
@@ -58,6 +61,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Apollo: 1989fd87f1389f1a07e70cc46b3420acf96d9f62
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
+  ImageDetect: 2c828415ff500d59375656dfa1a3399ad01e0d62
   JdenticonSwift: 7b3bf13c3855d6bd4da295e1ca69a4dac0c6cc37
   SortedArray: 2cbbfbd492cd949190bd09dd063b345aef6b7362
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
@@ -65,6 +69,6 @@ SPEC CHECKSUMS:
   SwiftOCR: e1a5c7582f074b54df2b1ad273983088b3cf5d45
   SwiftyUserDefaults: cebe0ff9472f52699772a514b6f7155861d8069b
 
-PODFILE CHECKSUM: c9d306caec357059ed02a48cc3cd6455512eaaf5
+PODFILE CHECKSUM: ba62815ec8fdd1134493dcb1f70ad6b67037b520
 
 COCOAPODS: 1.5.3
