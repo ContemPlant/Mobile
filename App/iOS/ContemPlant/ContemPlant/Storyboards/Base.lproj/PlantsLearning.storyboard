@@ -101,7 +101,6 @@
                                             <outlet property="jdenticonImageView" destination="SYE-uZ-jNG" id="i5m-dr-tOq"/>
                                             <outlet property="jdenticonWebView" destination="qc8-m7-Q72" id="WD6-eO-Z3w"/>
                                             <outlet property="plantNameLabel" destination="G1M-Or-RK5" id="wOi-HB-j9J"/>
-                                            <segue destination="uiW-Bo-ODl" kind="show" id="dY8-81-2bg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -129,6 +128,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Dv7-zH-eFK" id="AiW-gz-bTZ"/>
+                        <segue destination="uiW-Bo-ODl" kind="show" identifier="selectedPlantSegue" id="Fwr-hZ-9en"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgZ-QZ-4Yl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -138,21 +138,23 @@
         <!--Planty-->
         <scene sceneID="VbK-CO-MTf">
             <objects>
-                <viewController id="uiW-Bo-ODl" sceneMemberID="viewController">
+                <viewController id="uiW-Bo-ODl" customClass="PlantDetailViewController" customModule="ContemPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gmr-1n-uJ0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TX-zz-H9Q">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TX-zz-H9Q">
                                 <rect key="frame" x="0.0" y="696" width="375" height="82"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.64705882349999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="82" id="1ch-Vb-XTq"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="31"/>
                                 <state key="normal" title="aktivieren">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Yw0-KJ-Nw3" kind="show" id="lTb-De-S2g"/>
+                                    <action selector="activatePlantTapped:" destination="uiW-Bo-ODl" eventType="touchUpInside" id="a8g-6a-g41"/>
                                 </connections>
                             </button>
                             <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pEc-x2-Yza">
@@ -173,37 +175,63 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8TX-zz-H9Q" firstAttribute="trailing" secondItem="PbV-Nl-XhR" secondAttribute="trailing" id="64h-kZ-KjL"/>
+                            <constraint firstItem="8TX-zz-H9Q" firstAttribute="leading" secondItem="PbV-Nl-XhR" secondAttribute="leading" id="J96-A7-vM1"/>
+                            <constraint firstItem="PbV-Nl-XhR" firstAttribute="bottom" secondItem="8TX-zz-H9Q" secondAttribute="bottom" constant="34" id="hNz-QU-r5n"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PbV-Nl-XhR"/>
                     </view>
                     <navigationItem key="navigationItem" title="Planty" id="fUi-S9-pxV"/>
+                    <connections>
+                        <segue destination="Yw0-KJ-Nw3" kind="show" id="lEh-4b-2ws"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Pk-j5-Fi9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-570.39999999999998" y="-437.4384236453202"/>
         </scene>
-        <!--View Controller-->
+        <!--Load Plant View Controller-->
         <scene sceneID="bXk-eD-Hhp">
             <objects>
-                <viewController id="Yw0-KJ-Nw3" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoadPlantViewController" id="Yw0-KJ-Nw3" customClass="LoadPlantViewController" customModule="ContemPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6e5-dh-JnK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bitte in die Öffung schieben!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKk-FR-qbM">
-                                <rect key="frame" x="26" y="116" width="323" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YDI-nX-2y4">
+                                <rect key="frame" x="8" y="88" width="359" height="724"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitte in die Öffung schieben!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="cKk-FR-qbM">
+                                        <rect key="frame" x="34.333333333333343" y="0.0" width="290.33333333333326" height="352"/>
+                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="61"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lr2-4J-VOW">
+                                        <rect key="frame" x="0.0" y="372" width="359" height="352"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="lr2-4J-VOW" firstAttribute="leading" secondItem="YDI-nX-2y4" secondAttribute="leading" id="Doo-5N-qdl"/>
+                                    <constraint firstAttribute="bottom" secondItem="lr2-4J-VOW" secondAttribute="bottom" id="ich-Wi-8dY"/>
+                                    <constraint firstAttribute="trailing" secondItem="lr2-4J-VOW" secondAttribute="trailing" id="oct-e1-aTk"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uMq-BP-Swi" firstAttribute="trailing" secondItem="YDI-nX-2y4" secondAttribute="trailing" constant="8" id="0gb-9L-tJL"/>
+                            <constraint firstItem="YDI-nX-2y4" firstAttribute="leading" secondItem="uMq-BP-Swi" secondAttribute="leading" constant="8" id="XdK-zz-qPD"/>
+                            <constraint firstItem="uMq-BP-Swi" firstAttribute="bottom" secondItem="YDI-nX-2y4" secondAttribute="bottom" id="bK7-EG-JKx"/>
+                            <constraint firstItem="YDI-nX-2y4" firstAttribute="top" secondItem="uMq-BP-Swi" secondAttribute="top" id="ui9-Yi-3pV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="uMq-BP-Swi"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xab-Qs-toS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="394" y="-437"/>
+            <point key="canvasLocation" x="392.80000000000001" y="-437.4384236453202"/>
         </scene>
         <!--Plants Navigation Controller-->
         <scene sceneID="vaa-Qm-uf2">

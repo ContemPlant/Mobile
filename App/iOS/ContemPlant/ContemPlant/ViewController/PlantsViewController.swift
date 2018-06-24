@@ -58,21 +58,45 @@ class PlantsViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
 
+    private var selectedPlant: Plant?
+    private func select(plant: Plant) {
+        selectedPlant = plant
+    }
+    private func deselect(plant: Plant) {
+        selectedPlant = nil
+    }
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let detailVC = segue.destination as? PlantDetailViewController {
+            detailVC.plant = selectedPlant! //force unwrap, because if it is nil here, we've done a huge mistake!
+        }
     }
-    */
 
 }
 
 //MARK: - TableView
 extension PlantsViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //get plant
+        let plant = user.plants[indexPath.row]
+        
+        //"select" the plant
+        select(plant: plant)
+        
+        //perform the segue
+        performSegue(withIdentifier: "selectedPlantSegue", sender: self)
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        //get plant
+        let plant = user.plants[indexPath.row]
+        
+        //"deselect" the plant
+        deselect(plant: plant)
+    }
 }
 
 extension PlantsViewController: UITableViewDataSource {
