@@ -10,6 +10,7 @@ target 'ContemPlant' do
   pod 'Apollo', :podspec => 'custom-podspec/Apollo.podspec'
   pod 'SortedArray', :podspec => 'custom-podspec/SortedArray.podspec'
   pod 'JdenticonSwift', :podspec => 'custom-podspec/JdenticonSwift.podspec'
+  pod 'SwiftGif', :podspec => 'custom-podspec/SwiftGif.podspec'
 
   pod 'SwiftOCR'
   pod 'ImageDetect'
