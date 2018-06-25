@@ -12,8 +12,8 @@ import AVFoundation
 class PlantDetailViewController: UIViewController {
     
     //MARK: - instance variables
+    var user: User!
     var plant: Plant!
-    
     
     //MARK: - view lifecycle
     override func viewDidLoad() {
@@ -71,14 +71,14 @@ extension PlantDetailViewController {
     private func showCameraAccessDeniedError() {
         show(simpleErrorMessage: "Kamera-Zugriff wird benötigt, um die Pflanze zu aktivieren. Ohne geht es leider nicht!",
              withTitle: "Kamera-Zugriff verweigert",
-             actionButtonTitle: "Einstellungen") {
+             actionButton:(title: "Einstellungen", action: {
                 guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
                     self.show(simpleErrorMessage: "Öffnen fehlgeschlagen", withTitle: "Einstellungen können nicht geladen werden!")
                     return
                 }
                 
                 UIApplication.shared.open(settingsURL)
-        }
+        }))
     }
     
     private func showCameraAccessRestrictedError() {
@@ -89,7 +89,7 @@ extension PlantDetailViewController {
     private func startPlantActivation() {
         //create the new ViewController that handles
         do {
-            let loadPlantVC = try LoadPlantViewController.create()
+            let loadPlantVC = try LoadPlantViewController.create(forUser: user, withPlant: plant)
         
             //present the VC
             show(loadPlantVC, sender:self)

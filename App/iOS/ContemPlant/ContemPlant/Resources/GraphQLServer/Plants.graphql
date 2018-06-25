@@ -19,3 +19,10 @@ fragment BasicPlantDetails on Plant {
     id
     name
 }
+
+
+mutation LoadPlantOnArdu($arduID: String!, $plantID: ID!) {
+    loadPlantOnArdu(arduId: $arduID, plantId: $plantID) {
+        arduId
+    }
+}

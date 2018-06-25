@@ -279,6 +279,87 @@ public final class NewPlantsSubscription: GraphQLSubscription {
   }
 }
 
+public final class LoadPlantOnArduMutation: GraphQLMutation {
+  public let operationDefinition =
+    "mutation LoadPlantOnArdu($arduID: String!, $plantID: ID!) {\n  loadPlantOnArdu(arduId: $arduID, plantId: $plantID) {\n    __typename\n    arduId\n  }\n}"
+
+  public var arduID: String
+  public var plantID: GraphQLID
+
+  public init(arduID: String, plantID: GraphQLID) {
+    self.arduID = arduID
+    self.plantID = plantID
+  }
+
+  public var variables: GraphQLMap? {
+    return ["arduID": arduID, "plantID": plantID]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("loadPlantOnArdu", arguments: ["arduId": GraphQLVariable("arduID"), "plantId": GraphQLVariable("plantID")], type: .object(LoadPlantOnArdu.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(loadPlantOnArdu: LoadPlantOnArdu? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "loadPlantOnArdu": loadPlantOnArdu.flatMap { (value: LoadPlantOnArdu) -> ResultMap in value.resultMap }])
+    }
+
+    public var loadPlantOnArdu: LoadPlantOnArdu? {
+      get {
+        return (resultMap["loadPlantOnArdu"] as? ResultMap).flatMap { LoadPlantOnArdu(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "loadPlantOnArdu")
+      }
+    }
+
+    public struct LoadPlantOnArdu: GraphQLSelectionSet {
+      public static let possibleTypes = ["Ardu"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("arduId", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(arduId: String) {
+        self.init(unsafeResultMap: ["__typename": "Ardu", "arduId": arduId])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var arduId: String {
+        get {
+          return resultMap["arduId"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "arduId")
+        }
+      }
+    }
+  }
+}
+
 public struct BasicPlantDetails: GraphQLFragment {
   public static let fragmentDefinition =
     "fragment BasicPlantDetails on Plant {\n  __typename\n  id\n  name\n}"

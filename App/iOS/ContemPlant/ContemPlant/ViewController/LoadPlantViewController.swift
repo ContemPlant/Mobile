@@ -8,6 +8,9 @@
 
 import UIKit
 import AVFoundation
+import SwiftOCR
+import ImageDetect
+import Vision
 
 class LoadPlantViewController: UIViewController {
     //MARK: - instance variables
@@ -15,6 +18,13 @@ class LoadPlantViewController: UIViewController {
     private var photoOutput: AVCapturePhotoOutput!
     private var captureDevice: AVCaptureDevice!
     private var captureTimer: Timer?
+    
+    private var user: User!
+    private var plant: Plant!
+    
+    
+    ///The instance for analysing the OCR content
+    private let swiftOCR = SwiftOCR()
     
     //MARK: - view lifecycle
     override func viewDidLoad() {
@@ -37,6 +47,9 @@ class LoadPlantViewController: UIViewController {
 //MARK: - capturing stuff
 extension LoadPlantViewController {
     private func startCaptureTimer() {
+        guard captureTimer == nil else {
+            return //nothing to do, because timer is already running...
+        }
         captureTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [unowned self] (timer) in
             //capture photo and analyse
             self.capturePhoto()
@@ -75,16 +88,71 @@ extension LoadPlantViewController {
         //configure settings for the photo
         let settings = AVCapturePhotoSettings()
         settings.flashMode = .off
-        settings.isHighResolutionPhotoEnabled = true
+        settings.isHighResolutionPhotoEnabled = false
         
         photoOutput.capturePhoto(with: settings, delegate: self)
     }
     
     private func analyse(image: UIImage) {
+        guard let cgImage = image.cgImage else {
+            return
+        }
         
-        print("image analyse starts...")
         
-        // TODO:
+        //create vision request
+        let imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:]) //basic request handler
+        
+        //detect barcodes
+        let barcodeDetectionRequest = VNDetectBarcodesRequest()
+        barcodeDetectionRequest.symbologies = [.EAN8, .EAN13, .code128, .QR]
+        
+        
+        //stop capture timer before performing the detection
+        stopCaptureTimer()
+        
+        //perform the detection
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                //perform request
+                try imageRequestHandler.perform([barcodeDetectionRequest])
+                
+                //get results
+                if let barcodeObservations = barcodeDetectionRequest.results as? [VNBarcodeObservation],
+                    let firstObservedBarcode = barcodeObservations.first,
+                    let readBarcodeContent = firstObservedBarcode.payloadStringValue {
+                    //just select the first one...
+                    
+                    print(readBarcodeContent)
+                    self.loadPlant(onArduWithId: readBarcodeContent, completionHandler: { [weak self] (error) in
+                        DispatchQueue.main.async { //UI stuff always on the main queue
+                            if let error = error {
+                                //do error handling
+                                self?.userInterfaceHandle(loadPlantError: error)
+                                
+                                self?.startCaptureTimer()
+                                return //return and restart the capture timer
+                            }
+                            
+                            //show the screen that indicates a loaded plant
+                            self?.blockUIWithLoadedPlantIndicator()
+                        }
+                    })
+                    
+                    return //don't start capture timer again (belowe)
+                }
+            } catch let error as NSError {
+                //just print out the error
+                print("Failed to perform image request: \(error)")
+            }
+            
+            //start capture timer again! (on the main queue)
+            DispatchQueue.main.async {
+                self.startCaptureTimer()
+            }
+        }
+        
+        
+        return
     }
 }
 
@@ -107,10 +175,37 @@ extension LoadPlantViewController: AVCapturePhotoCaptureDelegate {
     }
 }
 
+//MARK: - loading a plant
+extension LoadPlantViewController {
+    private func loadPlant(onArduWithId arduID: String, completionHandler: @escaping User.LoadPlantCompletionHandler) {
+        //check the ardu ID
+        guard arduID.count == 4, Int(arduID) != nil else {
+                completionHandler(User.LoadPlantServerError.invalidArduID)
+            return
+        }
+        
+        user.load(plant: plant, onArdu: arduID, completion: completionHandler)
+    }
+    
+    private func blockUIWithLoadedPlantIndicator() {
+        //show the loaded plant indicator
+        let loadedPlantIndicator = PlantLoadedIndicatorViewController.create(forUser: user, withLoadedPlant: plant)
+        
+        //do success haptic feedback
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
+        
+        //show the VC (but not with push in the navigation controller)
+        self.navigationController?.present(loadedPlantIndicator, animated: true, completion: {
+            //close the load plant view controller instance by popping it from the navigation stack
+            self.navigationController?.popViewController(animated: false)
+        })
+    }
+}
+
 
 //MARK: - creating an instance
 extension LoadPlantViewController {
-    class func create() throws -> LoadPlantViewController{
+    class func create(forUser user: User, withPlant plant: Plant) throws -> LoadPlantViewController{
         //create the session
         guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) ?? AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
             //camera not working,
@@ -150,11 +245,23 @@ extension LoadPlantViewController {
         vc.photoOutput = photoOutput
         vc.captureDevice = captureDevice
         
+        vc.user = user
+        vc.plant = plant
+        
         return vc
     }
     
     enum LoadPlantError:Error {
         case cameraProblem
         case unknownError
+    }
+}
+
+
+//MARK: - general error handling
+extension LoadPlantViewController {
+    private func userInterfaceHandle(loadPlantError: Error) {
+        //for the moment, just show an error that indicates that loading the plant was not successfull, in the future advanced error handling can be done here, like error sound or vibration etc.
+        show(simpleErrorMessage: "Das Laden der Pflanze an deinen Lernplatz war leider nicht erfolgreich! Bitte versuche es erneut! Nicht aufgeben! Weiter lernen!", withTitle: "Laden fehlgeschlagen 😭")
     }
 }

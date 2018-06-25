@@ -72,6 +72,7 @@ class PlantsViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if let detailVC = segue.destination as? PlantDetailViewController {
+            detailVC.user = user
             detailVC.plant = selectedPlant! //force unwrap, because if it is nil here, we've done a huge mistake!
         }
     }

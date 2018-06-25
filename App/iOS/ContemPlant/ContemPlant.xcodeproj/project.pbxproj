@@ -17,6 +17,7 @@
 		6B152A4F20D69BDA00F5DE1C /* PlantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B152A4E20D69BDA00F5DE1C /* PlantsViewController.swift */; };
 		6B152A5120D6A0B400F5DE1C /* PlantsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B152A5020D6A0B400F5DE1C /* PlantsNavigationController.swift */; };
 		6B1889CA20D5AB660078303F /* Dictionary+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1889C920D5AB660078303F /* Dictionary+Helper.swift */; };
+		6B1D2C1C20E1480700066C84 /* PlantLoadedIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1D2C1B20E1480700066C84 /* PlantLoadedIndicatorViewController.swift */; };
 		6B212DBF20D6B13400A41C1C /* Plants.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 6B212DBE20D6B13400A41C1C /* Plants.graphql */; };
 		6B212DC120D6B19B00A41C1C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B212DC020D6B19B00A41C1C /* API.swift */; };
 		6B212DC320D6B25F00A41C1C /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B212DC220D6B25800A41C1C /* Pacifico-Regular.ttf */; };
@@ -85,6 +86,7 @@
 		6B152A4E20D69BDA00F5DE1C /* PlantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsViewController.swift; sourceTree = "<group>"; };
 		6B152A5020D6A0B400F5DE1C /* PlantsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsNavigationController.swift; sourceTree = "<group>"; };
 		6B1889C920D5AB660078303F /* Dictionary+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Helper.swift"; sourceTree = "<group>"; };
+		6B1D2C1B20E1480700066C84 /* PlantLoadedIndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantLoadedIndicatorViewController.swift; sourceTree = "<group>"; };
 		6B212DBE20D6B13400A41C1C /* Plants.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Plants.graphql; sourceTree = "<group>"; };
 		6B212DC020D6B19B00A41C1C /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = ContemPlant/API.swift; sourceTree = SOURCE_ROOT; };
 		6B212DC220D6B25800A41C1C /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pacifico-Regular.ttf"; path = "ContemPlant/Resources/Fonts/Pacifico/Pacifico-Regular.ttf"; sourceTree = SOURCE_ROOT; };
@@ -336,6 +338,7 @@
 				6B4374FC20DAF0BA008AF897 /* PlantTableViewCell.swift */,
 				6B43750720DB10CF008AF897 /* PlantDetailViewController.swift */,
 				6B0CFE4F20E02FD500903B69 /* LoadPlantViewController.swift */,
+				6B1D2C1B20E1480700066C84 /* PlantLoadedIndicatorViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				6BACC3D120D2DE49007D709E /* AppDelegate.swift in Sources */,
 				6BACC40520D2E54B007D709E /* StartViewController.swift in Sources */,
 				6B152A5120D6A0B400F5DE1C /* PlantsNavigationController.swift in Sources */,
+				6B1D2C1C20E1480700066C84 /* PlantLoadedIndicatorViewController.swift in Sources */,
 				6B152A4F20D69BDA00F5DE1C /* PlantsViewController.swift in Sources */,
 				6BCB576420D47EAD007CF737 /* Constants.swift in Sources */,
 			);

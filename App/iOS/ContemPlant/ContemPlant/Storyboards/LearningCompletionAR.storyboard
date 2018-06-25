@@ -33,38 +33,10 @@
             </objects>
             <point key="canvasLocation" x="2889" y="-437"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Fes-2M-NNP">
-            <objects>
-                <viewController id="FYa-8s-DSA" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kss-Ag-8uY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMl-ot-ymY">
-                                <rect key="frame" x="130" y="225" width="96" height="30"/>
-                                <state key="normal" title="finish learning"/>
-                                <connections>
-                                    <segue destination="44l-FM-UWm" kind="show" id="7ai-1K-RII"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="NMl-ot-ymY" firstAttribute="centerY" secondItem="kss-Ag-8uY" secondAttribute="centerY" constant="-166" id="9O6-RX-foT"/>
-                            <constraint firstItem="NMl-ot-ymY" firstAttribute="centerX" secondItem="kss-Ag-8uY" secondAttribute="centerX" constant="-9.5" id="FeZ-Pq-rS8"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="imX-gx-tVU"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xU9-u3-L8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1278" y="-437"/>
-        </scene>
         <!--Plant View Controller-->
         <scene sceneID="bW6-fr-s5F">
             <objects>
-                <viewController id="44l-FM-UWm" customClass="ARPlantViewController" customModule="ContemPlant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ARPlantViewController" id="44l-FM-UWm" customClass="ARPlantViewController" customModule="ContemPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="njJ-1E-Fmt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

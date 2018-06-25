@@ -12,6 +12,11 @@ import ARKit
 
 class ARPlantViewController: UIViewController, ARSCNViewDelegate {
 
+    //MARK: - instance variables
+    private var user: User!
+    private var plant: Plant!
+    
+    //MARK: - outlets
     @IBOutlet var sceneView: ARSCNView!
     
     override func viewDidLoad() {
@@ -22,7 +27,7 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
         
         // DEBUG:
         // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+//        sceneView.showsStatistics = true
         
         // Lighting setup
         // TODO: improve lighting (maybe also the scn-file-models) so that automaticallyUpdatesLighting works
@@ -59,8 +64,10 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
 
-    // MARK: - ARSCNViewDelegate
-    
+}
+
+// MARK: - ARSCNViewDelegate
+extension ARPlantViewController {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         //make sure, an image anchor is provided, because we track images
         guard let imageAnchor = anchor as? ARImageAnchor else {
@@ -94,10 +101,10 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
         
         //OPTIONAL (may be helpful for some models)
         //scale plant node
-//        let scaleFactor  = 1.0
-//        plantNode.scale = SCNVector3(scaleFactor, scaleFactor, scaleFactor)
-//        //position plant
-//        plantNode.position.y = 0.0 //y is the "height" coordinate in usual 3D-space
+        //        let scaleFactor  = 1.0
+        //        plantNode.scale = SCNVector3(scaleFactor, scaleFactor, scaleFactor)
+        //        //position plant
+        //        plantNode.position.y = 0.0 //y is the "height" coordinate in usual 3D-space
         
         //DEFAULT-Styling of nodes
         plantNode.pivot = SCNMatrix4MakeTranslation(0, plantNode.boundingBox.min.y, 0) //change the "origin" so that the plant is on the "plane"
@@ -118,5 +125,17 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+}
+
+
+//MARK: - creation of ARPlantViewController
+extension ARPlantViewController {
+    class func create(withUser user: User, andPlant plant: Plant) -> ARPlantViewController {
+        let arVC = UIStoryboard.learningCompletionAR.instantiateViewController(withIdentifier: "ARPlantViewController") as! ARPlantViewController
+        arVC.user = user
+        arVC.plant = plant
+        
+        return arVC
     }
 }

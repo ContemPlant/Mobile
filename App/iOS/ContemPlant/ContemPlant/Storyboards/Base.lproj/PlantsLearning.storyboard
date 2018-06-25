@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
         <array key="Lato-Light.ttf">
             <string>Lato-Light</string>
         </array>
@@ -233,6 +236,61 @@
             </objects>
             <point key="canvasLocation" x="392.80000000000001" y="-437.4384236453202"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="YzM-w1-5AV">
+            <objects>
+                <viewController id="MC9-ea-FHg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZFs-df-Tka">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rzK-Dp-zaf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EUP-ws-BtA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-578" y="239"/>
+        </scene>
+        <!--Plant Loaded Indicator View Controller-->
+        <scene sceneID="rD4-Au-2Am">
+            <objects>
+                <viewController storyboardIdentifier="PlantLoadedIndicatorViewController" id="PFl-aw-qAT" customClass="PlantLoadedIndicatorViewController" customModule="ContemPlant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wp6-vz-QO0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="KLg-kI-A6Y">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zum Beenden des Lernens, nimm dein Handy einfach aus der Box!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="q3K-Y5-HPm">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="367"/>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="42"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gifs/funnyPlantDanceAnimation" translatesAutoresizingMaskIntoConstraints="NO" id="fQn-uJ-c1q">
+                                        <rect key="frame" x="0.0" y="367" width="375" height="367"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16862745100000001" green="0.74901960779999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="KLg-kI-A6Y" firstAttribute="top" secondItem="Dlz-1Y-AVK" secondAttribute="top" id="9I2-N7-fcf"/>
+                            <constraint firstItem="KLg-kI-A6Y" firstAttribute="leading" secondItem="Dlz-1Y-AVK" secondAttribute="leading" id="No1-g2-RJs"/>
+                            <constraint firstItem="Dlz-1Y-AVK" firstAttribute="trailing" secondItem="KLg-kI-A6Y" secondAttribute="trailing" id="SfO-38-FJt"/>
+                            <constraint firstItem="Dlz-1Y-AVK" firstAttribute="bottom" secondItem="KLg-kI-A6Y" secondAttribute="bottom" id="VZK-mn-Pmr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Dlz-1Y-AVK"/>
+                    </view>
+                    <connections>
+                        <outlet property="plantGifImageView" destination="fQn-uJ-c1q" id="mNS-gH-HAS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zJm-pb-LBC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="393" y="262"/>
+        </scene>
         <!--Plants Navigation Controller-->
         <scene sceneID="vaa-Qm-uf2">
             <objects>
@@ -253,6 +311,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Gifs/funnyPlantDanceAnimation" width="504" height="504"/>
         <image name="Icons/Logo+Lettering" width="500" height="500"/>
     </resources>
 </document>

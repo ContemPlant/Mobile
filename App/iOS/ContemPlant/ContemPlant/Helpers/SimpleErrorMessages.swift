@@ -15,8 +15,7 @@ extension UIViewController {
               withTitle title: String?,
               okButtonTitle: String = "ok",
               okButtonAction: SimpleErrorMessageAction? = nil,
-              actionButtonTitle: String? = nil,
-              actionButtonAction: SimpleErrorMessageAction? = nil) {
+              actionButton: (title: String, action: SimpleErrorMessageAction)? = nil) {
         
         //basic alert
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -27,10 +26,15 @@ extension UIViewController {
         }
         alert.addAction(okAction)
         
-        let actionAction = UIAlertAction(title: actionButtonTitle, style: .default) { (_) in
-            actionButtonAction?()
+        if let actionButtonSetup = actionButton {
+            let actionAction = UIAlertAction(title: actionButtonSetup.title, style: .default) { (_) in
+                actionButtonSetup.action()
+            }
+            alert.addAction(actionAction)
         }
-        alert.addAction(actionAction)
+        
+        //haptic feedback
+        UINotificationFeedbackGenerator().notificationOccurred(.error)
         
         //present the alert
         present(alert, animated: true, completion: nil)

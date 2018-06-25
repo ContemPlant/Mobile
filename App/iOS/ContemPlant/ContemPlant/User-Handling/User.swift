@@ -55,6 +55,29 @@ final class User: Codable {
     lazy var plantController: UserPlantController = { [unowned self] in
         return UserPlantController(withApolloClient: apollo)
     }()
+    
+    
+    enum LoadPlantServerError: Error {
+        case invalidArduID
+        case unknown
+    }
+    
+    typealias LoadPlantCompletionHandler = (Error?) -> Void
+    func load(plant: Plant, onArdu arduID: String, completion: @escaping LoadPlantCompletionHandler) {
+        let mutation = LoadPlantOnArduMutation(arduID: arduID, plantID: plant.id)
+        
+        apollo.perform(mutation: mutation) { (result, error) in
+            guard let _ = result?.data?.loadPlantOnArdu?.arduId, error == nil else {
+                //an error occurred
+                completion(error ?? LoadPlantServerError.unknown)
+                
+                return
+            }
+            
+            //successfully completed...
+            completion(nil)
+        }
+    }
    
 }
 
