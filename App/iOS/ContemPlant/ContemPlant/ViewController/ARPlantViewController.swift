@@ -117,7 +117,7 @@ extension ARPlantViewController {
         
         //add the plant node
         // Models from https://poly.google.com/
-        let assetName = "tree" //daisy" //"forest" //plant" // "tree"
+        let assetName = "rose" //tree" //daisy" //"forest" //plant" // "tree"
         guard let plantScene = SCNScene(named: "art.scnassets/\(assetName).scn"),
             let plantNode = plantScene.rootNode.childNode(withName: assetName, recursively: false)
             else {
