@@ -29,12 +29,12 @@ class UserPlantController {
         
         //setup the subscription
         subscribeHandler = apollo.subscribe(subscription: NewPlantsSubscription()) { [weak self] (result, error) in
-            //begin plant update
-            self?.beginPlantUpdate()
-            
             guard let id = result?.data?.newPlant?.node?.id, let name = result?.data?.newPlant?.node?.name else {
                 return
             }
+            
+            //begin plant update (if no error occurred...)
+            self?.beginPlantUpdate()
             
             //insert the plant to the appropriate position
             let plant = Plant(id: id, name: name)
@@ -46,7 +46,8 @@ class UserPlantController {
         }
     }
     
-    func resetAndFetchPlants() {
+    typealias PlantFetchingErrorHandler = (_ error: Error) -> Void
+    func resetAndFetchPlants(errorHandler: PlantFetchingErrorHandler? = nil) {
         //begin plant update
         beginPlantUpdate()
         
@@ -55,7 +56,15 @@ class UserPlantController {
         
         //re-fetch
         apollo.fetch(query: PlantsQuery()) { [weak self] (result, error) in
+            if let error = error {
+                //call the optional error handler
+                errorHandler?(error)
+            }
+            
             guard let newPlants: [Plant] = result?.data?.plants.map({ $0.fragments.basicPlantDetails }) else {
+                //end plant update
+                self?.endPlantUpdate()
+                
                 return
             }
             
@@ -63,13 +72,13 @@ class UserPlantController {
             
             // DEBUG:
             //            print(String(describing:result?.data?.plants))
+            
+            //end plant update
+            self?.endPlantUpdate()
         }
         
         //also, setup a subscribe handler, if not yet done...
         setupSubscribeHandler()
-        
-        //end plant update
-        endPlantUpdate()
     }
     
     

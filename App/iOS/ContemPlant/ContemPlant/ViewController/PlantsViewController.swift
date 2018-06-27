@@ -19,6 +19,8 @@ class PlantsViewController: UIViewController {
         return plantsNavigationController.user
     }
     
+    private let refreshControl = UIRefreshControl()
+    
     //MARK: - outlets
     @IBOutlet var tableView: UITableView!
     
@@ -32,7 +34,14 @@ class PlantsViewController: UIViewController {
     }
     
     //MARK: - plants fetching/handling
-    
+    private func reloadPlants() {
+        self.refreshControl.beginRefreshing()
+        user.plantController.resetAndFetchPlants() { [weak self] error in
+            DispatchQueue.main.async {
+                self?.show(simpleErrorMessage: "Netzwerk-Fehler", withTitle: "Wir konnten keine Verbindung mit dem Server herstellen!")
+            }
+        }
+    }
     
     
     //MARK: - view lifecycle
@@ -42,11 +51,15 @@ class PlantsViewController: UIViewController {
         // any further additional setup after loading the view...
         // ...
         
-        user.plantController.resetAndFetchPlants()
+        reloadPlants()
         
         
         //setup plant observers
         setupPlantsControllerObservers()
+        
+        
+        //setup the table view
+        setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +93,17 @@ class PlantsViewController: UIViewController {
 }
 
 //MARK: - TableView
+extension PlantsViewController {
+    private func setupTableView() {
+        tableView.refreshControl = refreshControl
+        tableView.refreshControl?.addTarget(self, action: #selector(refreshTableViewManually), for: .valueChanged)
+    }
+    @objc private func refreshTableViewManually() {
+        //just re-initiate fetching
+        reloadPlants()
+    }
+}
+
 extension PlantsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //get plant
@@ -134,6 +158,7 @@ extension PlantsViewController {
         }
         
         self.user.plantController.plantUpdateFinishedHandler = { [weak self] in
+            self?.refreshControl.endRefreshing()
             self?.tableView.endUpdates()
         }
         
