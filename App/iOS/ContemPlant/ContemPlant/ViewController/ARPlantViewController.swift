@@ -16,8 +16,22 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
     private var user: User!
     private var plant: Plant!
     
+    private var fullyVisibleARFrame: CGRect!
+    
     //MARK: - outlets
     @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var containerViewBottomSpacingConstraint: NSLayoutConstraint!
+    @IBOutlet var backgroundBlurVisualEffectView: UIVisualEffectView!
+    @IBOutlet var scrollableContainer: UIView!
+    @IBOutlet var backButton: UIButton!
+    
+    
+    //MARK: - actions
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +47,18 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
         // TODO: improve lighting (maybe also the scn-file-models) so that automaticallyUpdatesLighting works
         sceneView.autoenablesDefaultLighting = true //to support scn-files like daisy
         sceneView.automaticallyUpdatesLighting = true
+        
+        
+        //setup scroll view
+        setupScrollView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        //navigation controller stuff
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         //(re)set tracking
         resetTrackingConfig()
@@ -59,6 +81,9 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        //navigation controller stuff
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         
         // Pause the view's session
         sceneView.session.pause()
@@ -137,5 +162,35 @@ extension ARPlantViewController {
         arVC.plant = plant
         
         return arVC
+    }
+}
+
+//MARK: - interactive pop gesture recognizer
+extension ARPlantViewController: UIGestureRecognizerDelegate { }
+
+
+//MARK: - scroll view stuff
+extension ARPlantViewController {
+    private func setupScrollView() {
+        scrollView.delegate = self
+        scrollView.contentInsetAdjustmentBehavior = .never
+        
+        //save fully visible AR-Frame
+        fullyVisibleARFrame = scrollView.frame
+        fullyVisibleARFrame.size.height -= abs(containerViewBottomSpacingConstraint.constant)
+    }
+}
+
+extension ARPlantViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //get the current content offset y
+        let currentOffset = scrollView.contentOffset
+        
+        //compute how much of the visible AR-View is covered
+        let coveredSpace = (fullyVisibleARFrame.size.height-(scrollableContainer.frame.origin.y-currentOffset.y))/fullyVisibleARFrame.size.height
+        
+        print(coveredSpace)
+        
+        backgroundBlurVisualEffectView.alpha = coveredSpace*2 //faster blur...
     }
 }
