@@ -134,7 +134,9 @@ extension ARPlantViewController {
         //DEFAULT-Styling of nodes
         plantNode.pivot = SCNMatrix4MakeTranslation(0, plantNode.boundingBox.min.y, 0) //change the "origin" so that the plant is on the "plane"
         
-        node.addChildNode(plantNode)
+//        node.addChildNode(plantNode)
+        
+        add3DFractal(toNode: node)
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
@@ -192,5 +194,52 @@ extension ARPlantViewController: UIScrollViewDelegate {
         print(coveredSpace)
         
         backgroundBlurVisualEffectView.alpha = coveredSpace*2 //faster blur...
+    }
+}
+
+
+//MARK: - 3D fractal
+extension ARPlantViewController {
+    private func add3DFractal(toNode node: SCNNode) {
+        let depth = 12
+        
+        //draw root/trunk
+        let squareNode = self.squareNode(ofSize: 0.05)
+        
+        node.addChildNode(squareNode)
+        
+        //draw "leaves"
+        add3DFractalLeaves(uponNode: squareNode, depth: depth)
+    }
+    
+    private func add3DFractalLeaves(uponNode node: SCNNode, depth: Int) {
+        guard depth > 0 else {
+            return
+        }
+        
+        let a = squareNode(ofSize: node.boundingBox.max.x)
+        let b = squareNode(ofSize: node.boundingBox.max.x)
+        let aPos = SCNVector3(node.boundingBox.max.x/2, node.boundingBox.max.y+node.boundingBox.max.y/2, node.position.z)
+        a.position = aPos
+        a.rotation = SCNVector4(1, 1, 0, -Float.pi/2)
+        
+        let bPos = SCNVector3(node.boundingBox.min.x/2, node.boundingBox.max.y+node.boundingBox.max.y/2, node.position.z)
+        b.position = bPos
+        b.rotation = SCNVector4(-1, 1, 0, Float.pi/2)
+        
+        node.addChildNode(a)
+        node.addChildNode(b)
+        
+        add3DFractalLeaves(uponNode: a, depth: depth-1)
+        add3DFractalLeaves(uponNode: b, depth: depth-1)
+    }
+    
+    private func squareNode(ofSize size: Float) -> SCNNode {
+        let geom = SCNBox(width: CGFloat(size), height: CGFloat(size), length: CGFloat(size), chamferRadius: 0)
+        geom.firstMaterial?.diffuse.contents = UIColor.green
+        
+        let node = SCNNode(geometry: geom)
+        
+        return node
     }
 }
