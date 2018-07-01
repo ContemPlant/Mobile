@@ -60,7 +60,6 @@ export default class LoadPlantScreen extends Component {
 
   async loadPlantOnArdu(arduID) {
     console.log("Found ardu ID: ", arduID, "should loaded on ", this.state.plantID)
-    // console.log("client", this.props.screenProps.client)
     const client = this.state.client
 
     if (!client) return
