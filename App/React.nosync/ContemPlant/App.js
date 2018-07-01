@@ -9,8 +9,11 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
 } from 'react-native';
+
+import LoadPlantScreen from './app/components/LoadPlantScreen';
+import MainUIWebView from './app/components/MainUIWebView';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -21,38 +24,19 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+
   render() {
+    const jsCode = "window.postMessage(document.getElementById('gb-main').innerHTML)"
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+      <View style={{flex: 1}}>
+        <View style={{flex: 1}}> 
+          <MainUIWebView style={{flex: 1}} 
+              onLogin={(params) => console.log("LOOOOO", params)} 
+              onArduLoad={(params) => console.log("ARDUUUU", params)}
+          /> 
+        </View>
+        <View style={{flex: 0}}> <LoadPlantScreen style={{flex: 0}} /> </View>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
