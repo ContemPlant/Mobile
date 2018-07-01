@@ -5,15 +5,18 @@
  */
 
 import React, { Component } from 'react';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { ApolloClient } from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+
 import {
   Platform,
-  StyleSheet,
-  Text,
-  View,
 } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 
-import LoadPlantScreen from './app/components/LoadPlantScreen';
-import MainUIWebView from './app/components/MainUIWebView';
+import { ServerConstants } from "./app/config/Constants"
+import { LoadPlantScreen, MainWebScreen } from './app/screens';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -22,21 +25,21 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
-export default class App extends Component<Props> {
 
+const MainNavigator = createStackNavigator({
+  MainUIWebView: { screen: MainWebScreen },
+  ArduLoader: { screen: LoadPlantScreen },
+}, client);
+
+const client = new ApolloClient({
+  link: new HttpLink({uri: ServerConstants.graphQLURL}),
+  cache: new InMemoryCache()
+})
+
+export default class App extends React.Component {
   render() {
-    const jsCode = "window.postMessage(document.getElementById('gb-main').innerHTML)"
-    return (
-      <View style={{flex: 1}}>
-        <View style={{flex: 1}}> 
-          <MainUIWebView style={{flex: 1}} 
-              onLogin={(params) => console.log("LOOOOO", params)} 
-              onArduLoad={(params) => console.log("ARDUUUU", params)}
-          /> 
-        </View>
-        <View style={{flex: 0}}> <LoadPlantScreen style={{flex: 0}} /> </View>
-      </View>
-    );
+    return <ApolloProvider client={client}>
+              <MainNavigator screenProps={{client: client}}/>;
+            </ApolloProvider>
   }
 }

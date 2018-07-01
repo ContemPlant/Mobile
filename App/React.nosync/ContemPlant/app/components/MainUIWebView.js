@@ -35,8 +35,9 @@ export default class MainUIWebView extends Component {
                 break; //IMPORTANT!!!
             case "loadOnArdu":
                 const plantID = eventData["plantID"]
+                const plantName = eventData["plantName"]
 
-                this.props.onArduLoad(plantID)
+                this.props.onArduLoad(plantID, plantName)
                 break;
             default:
                 return
