@@ -13,7 +13,7 @@ import {
 import { createStackNavigator } from 'react-navigation';
 
 import { ServerConstants } from "./app/config/Constants"
-import { LoadPlantScreen, MainWebScreen } from './app/screens';
+import { LoadPlantScreen, MainWebScreen, PlantLoadedScreen } from './app/screens';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -26,6 +26,7 @@ const instructions = Platform.select({
 const MainNavigator = createStackNavigator({
   MainUIWebView: { screen: MainWebScreen },
   ArduLoader: { screen: LoadPlantScreen },
+  PlantLoadedScreen: { screen: PlantLoadedScreen }
 });
 
 

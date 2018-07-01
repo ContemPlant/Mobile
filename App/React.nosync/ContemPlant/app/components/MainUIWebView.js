@@ -48,7 +48,7 @@ export default class MainUIWebView extends Component {
         return (
         <WebView
             source={{uri: ServerConstants.loginURL}}
-            style={{marginTop: 20}}
+            style={{marginTop: 0}}
             javaScriptEnabled={true}
             onMessage={this.onMessage.bind(this)}
         />

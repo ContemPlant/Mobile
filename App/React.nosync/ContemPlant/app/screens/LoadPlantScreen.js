@@ -74,7 +74,15 @@ export default class LoadPlantScreen extends Component {
                 }
               }
             `
-    }).then(res => console.log("RESP: ", res))
+    }).then(res => {
+      console.log("RESP: ", res)
+      this.props.navigation.goBack()
+
+      //show a modal Screen that indicates a loaded plant with an option for unloading a plant
+      this.props.navigation.navigate("PlantLoadedScreen", { modalVisible: true, client: client, plantID: plantID})
+    }).catch(e => {
+      console.log(e);
+      })
   }
 
   render() {
