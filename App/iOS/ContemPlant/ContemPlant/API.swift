@@ -82,6 +82,7 @@ public final class PlantsQuery: GraphQLQuery {
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("name", type: .nonNull(.scalar(String.self))),
+        GraphQLField("plantStates", arguments: ["last": 1], type: .list(.nonNull(.object(PlantState.selections)))),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -90,8 +91,8 @@ public final class PlantsQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID, name: String) {
-        self.init(unsafeResultMap: ["__typename": "Plant", "id": id, "name": name])
+      public init(id: GraphQLID, name: String, plantStates: [PlantState]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Plant", "id": id, "name": name, "plantStates": plantStates.flatMap { (value: [PlantState]) -> [ResultMap] in value.map { (value: PlantState) -> ResultMap in value.resultMap } }])
       }
 
       public var __typename: String {
@@ -121,6 +122,15 @@ public final class PlantsQuery: GraphQLQuery {
         }
       }
 
+      public var plantStates: [PlantState]? {
+        get {
+          return (resultMap["plantStates"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [PlantState] in value.map { (value: ResultMap) -> PlantState in PlantState(unsafeResultMap: value) } }
+        }
+        set {
+          resultMap.updateValue(newValue.flatMap { (value: [PlantState]) -> [ResultMap] in value.map { (value: PlantState) -> ResultMap in value.resultMap } }, forKey: "plantStates")
+        }
+      }
+
       public var fragments: Fragments {
         get {
           return Fragments(unsafeResultMap: resultMap)
@@ -143,6 +153,53 @@ public final class PlantsQuery: GraphQLQuery {
           }
           set {
             resultMap += newValue.resultMap
+          }
+        }
+      }
+
+      public struct PlantState: GraphQLSelectionSet {
+        public static let possibleTypes = ["PlantState"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("health", type: .nonNull(.scalar(Double.self))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID, health: Double) {
+          self.init(unsafeResultMap: ["__typename": "PlantState", "id": id, "health": health])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var health: Double {
+          get {
+            return resultMap["health"]! as! Double
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "health")
           }
         }
       }
@@ -362,7 +419,7 @@ public final class LoadPlantOnArduMutation: GraphQLMutation {
 
 public struct BasicPlantDetails: GraphQLFragment {
   public static let fragmentDefinition =
-    "fragment BasicPlantDetails on Plant {\n  __typename\n  id\n  name\n}"
+    "fragment BasicPlantDetails on Plant {\n  __typename\n  id\n  name\n  plantStates(last: 1) {\n    __typename\n    id\n    health\n  }\n}"
 
   public static let possibleTypes = ["Plant"]
 
@@ -370,6 +427,7 @@ public struct BasicPlantDetails: GraphQLFragment {
     GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
     GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
     GraphQLField("name", type: .nonNull(.scalar(String.self))),
+    GraphQLField("plantStates", arguments: ["last": 1], type: .list(.nonNull(.object(PlantState.selections)))),
   ]
 
   public private(set) var resultMap: ResultMap
@@ -378,8 +436,8 @@ public struct BasicPlantDetails: GraphQLFragment {
     self.resultMap = unsafeResultMap
   }
 
-  public init(id: GraphQLID, name: String) {
-    self.init(unsafeResultMap: ["__typename": "Plant", "id": id, "name": name])
+  public init(id: GraphQLID, name: String, plantStates: [PlantState]? = nil) {
+    self.init(unsafeResultMap: ["__typename": "Plant", "id": id, "name": name, "plantStates": plantStates.flatMap { (value: [PlantState]) -> [ResultMap] in value.map { (value: PlantState) -> ResultMap in value.resultMap } }])
   }
 
   public var __typename: String {
@@ -406,6 +464,62 @@ public struct BasicPlantDetails: GraphQLFragment {
     }
     set {
       resultMap.updateValue(newValue, forKey: "name")
+    }
+  }
+
+  public var plantStates: [PlantState]? {
+    get {
+      return (resultMap["plantStates"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [PlantState] in value.map { (value: ResultMap) -> PlantState in PlantState(unsafeResultMap: value) } }
+    }
+    set {
+      resultMap.updateValue(newValue.flatMap { (value: [PlantState]) -> [ResultMap] in value.map { (value: PlantState) -> ResultMap in value.resultMap } }, forKey: "plantStates")
+    }
+  }
+
+  public struct PlantState: GraphQLSelectionSet {
+    public static let possibleTypes = ["PlantState"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+      GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+      GraphQLField("health", type: .nonNull(.scalar(Double.self))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(id: GraphQLID, health: Double) {
+      self.init(unsafeResultMap: ["__typename": "PlantState", "id": id, "health": health])
+    }
+
+    public var __typename: String {
+      get {
+        return resultMap["__typename"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    public var id: GraphQLID {
+      get {
+        return resultMap["id"]! as! GraphQLID
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "id")
+      }
+    }
+
+    public var health: Double {
+      get {
+        return resultMap["health"]! as! Double
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "health")
+      }
     }
   }
 }

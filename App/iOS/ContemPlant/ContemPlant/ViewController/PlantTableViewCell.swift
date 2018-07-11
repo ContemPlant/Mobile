@@ -13,7 +13,7 @@ class PlantTableViewCell: UITableViewCell {
     //MARK: - outlets
     @IBOutlet var jdenticonImageView: UIImageView!
     @IBOutlet var plantNameLabel: UILabel!
-    @IBOutlet var healthIndicatorLabel: UIProgressView!
+    @IBOutlet var healthIndicatorProgressView: UIProgressView!
     @IBOutlet var detailLabel: UILabel!
     @IBOutlet var jdenticonWebView: JdenticonWebView!
     

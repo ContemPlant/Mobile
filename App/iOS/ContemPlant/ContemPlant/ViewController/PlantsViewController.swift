@@ -141,8 +141,13 @@ extension PlantsViewController: UITableViewDataSource {
         cell.textLabel?.text = plant.name
         cell.imageView?.image = (try? Jdenticon(from: "öjlasdfjölaksdjfölaskjd").image(with: cell.imageView!.frame.size.width) ) ?? (#imageLiteral(resourceName: "Icons/Logo+Schriftzug.pdf"))
         cell.jdenticonWebView.loadJdenticon(forValue: plant.id)
-        print(cell.jdenticonWebView)
-        print(plant.id)
+        
+        //health stuff
+        let healthValue = plant.currentHealth
+        cell.healthIndicatorProgressView.progress = Float(healthValue)
+        cell.healthIndicatorProgressView.progressTintColor = UIColor(colorBetween: #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1), andColor: #colorLiteral(red: 0.175152868, green: 0.7770395279, blue: 0.2203405499, alpha: 1), percent: CGFloat(healthValue)) ?? UIColor.systemsDefaultTintColor //default color is blue
+        cell.detailLabel.text = "Health: \(healthValue)"
+        
         return cell
     }
 }

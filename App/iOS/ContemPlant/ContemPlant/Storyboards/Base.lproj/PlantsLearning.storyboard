@@ -100,7 +100,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="detailLabel" destination="M0h-u8-HmC" id="bau-ek-H8g"/>
-                                            <outlet property="healthIndicatorLabel" destination="Cgr-mc-veK" id="3vw-nS-gsR"/>
+                                            <outlet property="healthIndicatorProgressView" destination="Cgr-mc-veK" id="3vw-nS-gsR"/>
                                             <outlet property="jdenticonImageView" destination="SYE-uZ-jNG" id="i5m-dr-tOq"/>
                                             <outlet property="jdenticonWebView" destination="qc8-m7-Q72" id="WD6-eO-Z3w"/>
                                             <outlet property="plantNameLabel" destination="G1M-Or-RK5" id="wOi-HB-j9J"/>
@@ -147,7 +147,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TX-zz-H9Q">
-                                <rect key="frame" x="0.0" y="696" width="375" height="82"/>
+                                <rect key="frame" x="0.0" y="662" width="375" height="82"/>
                                 <color key="backgroundColor" red="1" green="0.64705882349999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="82" id="1ch-Vb-XTq"/>

@@ -18,6 +18,10 @@ subscription NewPlants {
 fragment BasicPlantDetails on Plant {
     id
     name
+    plantStates(last:1) {
+        id
+        health
+    }
 }
 
 
