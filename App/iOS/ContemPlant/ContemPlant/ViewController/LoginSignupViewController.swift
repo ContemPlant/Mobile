@@ -15,6 +15,7 @@ class LoginSignupViewController: UIViewController {
     //MARK: outlets
     @IBOutlet var webView: WKWebView!
     private var urlObservation: NSKeyValueObservation?
+    private var activityIndicator: UIActivityIndicatorView!
     
     //MARK: actions
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
@@ -26,14 +27,16 @@ class LoginSignupViewController: UIViewController {
     var delegate: LoginSignupViewControllerDelegate?
 
     private var endpointURL: URL {
-        let base = Constants.webUIEndpointURL
+        var base = Constants.webUISubpagesEndpointURLString
         
         switch loginType {
         case .login:
-            return base.appendingPathComponent("login")
+            base.append("login")
         case .signup:
-            return base.appendingPathComponent("register")
+            base.append("register")
         }
+        
+        return URL(string: base)!
     }
     
     override func viewDidLoad() {
@@ -41,6 +44,9 @@ class LoginSignupViewController: UIViewController {
 
         //setup webview
         setupWebView()
+        
+        //setup webview activity indicator
+        setupWebViewActivityIndicator()
         
         //start loading the appropriate web endpoint
         reloadLoginPage()
@@ -50,6 +56,13 @@ class LoginSignupViewController: UIViewController {
 
 //MARK: - WebView stuff
 extension LoginSignupViewController {
+    private func setupWebViewActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        
+        let item = UIBarButtonItem(customView: activityIndicator)
+        
+        self.navigationItem.rightBarButtonItem = item
+    }
     private func setupWebView() {
         webView.navigationDelegate = self
         
@@ -61,9 +74,23 @@ extension LoginSignupViewController {
     }
     
     private func handleLoginCompletionBasedOnWebViewURL() {
+        guard let url = webView.url else { //hopefully never happen...
+            reloadLoginPage()
+            return
+        }
+        
         //check if its last component is overview (which means login was complete)
-        guard let lastComponent = webView.url?.lastPathComponent, lastComponent == "overview" else {
+        guard url != endpointURL, url.contemPlantRoute == "overview" else {
             //login was maybe failed, reload
+            
+            //if route is different than the current url, update it
+            if url.contemPlantRoute == "register" {
+                loginType = .signup
+            }
+            else if url.contemPlantRoute == "login" {
+                loginType = .login
+            }
+            
             reloadLoginPage()
             return
         }
@@ -128,6 +155,16 @@ extension LoginSignupViewController {
 extension LoginSignupViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print(navigation)
+        activityIndicator.stopAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        activityIndicator.startAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        //just reload
+        reloadLoginPage()
     }
 }
 
