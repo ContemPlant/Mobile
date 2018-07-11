@@ -22,6 +22,7 @@ PODS:
   - SwiftOCR (1.1):
     - GPUImage
   - SwiftyUserDefaults (4.0.0-alpha.1)
+  - UICircularProgressRing (3.0.0)
 
 DEPENDENCIES:
   - Apollo (from `custom-podspec/Apollo.podspec`)
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - SwiftGif (from `custom-podspec/SwiftGif.podspec`)
   - SwiftOCR
   - SwiftyUserDefaults (= 4.0.0-alpha.1)
+  - UICircularProgressRing
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -40,6 +42,7 @@ SPEC REPOS:
     - Starscream
     - SwiftOCR
     - SwiftyUserDefaults
+    - UICircularProgressRing
 
 EXTERNAL SOURCES:
   Apollo:
@@ -76,7 +79,8 @@ SPEC CHECKSUMS:
   SwiftGif: 474040add9a533ce89df58ef10968d9ca945e8a7
   SwiftOCR: e1a5c7582f074b54df2b1ad273983088b3cf5d45
   SwiftyUserDefaults: cebe0ff9472f52699772a514b6f7155861d8069b
+  UICircularProgressRing: 3b472692ffca84060fd444ea5c0b387161067c54
 
-PODFILE CHECKSUM: d3e71b7aef7348598eb91d85a8e5c6729aad67af
+PODFILE CHECKSUM: 54ccb70a230162168996aea0b9d53d9ba840840f
 
 COCOAPODS: 1.5.3

@@ -14,6 +14,8 @@ target 'ContemPlant' do
 
   pod 'SwiftOCR'
   pod 'ImageDetect'
+  
+  pod 'UICircularProgressRing'
 
   target 'ContemPlantTests' do
     inherit! :search_paths
