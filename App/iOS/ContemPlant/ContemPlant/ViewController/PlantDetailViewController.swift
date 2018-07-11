@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import UICircularProgressRing
 
 class PlantDetailViewController: UIViewController {
     
@@ -23,7 +24,9 @@ class PlantDetailViewController: UIViewController {
         updateUI(accordingToPlant: plant)
     }
     
-
+    //MARK: - outlets
+    @IBOutlet var healthCircularProgressRing: UICircularProgressRing!
+    
     
     //MARK: - actions
     @IBAction func activatePlantTapped(_ sender: UIButton) {
@@ -60,9 +63,7 @@ extension PlantDetailViewController {
     private func updateUI(accordingToPlant plant: Plant) {
         //set title
         self.title = plant.name
-        
-        
-        
+        self.healthCircularProgressRing.value = CGFloat(plant.currentHealth*100)
     }
 }
 
