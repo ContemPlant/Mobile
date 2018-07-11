@@ -1,0 +1,82 @@
+PODS:
+  - Apollo (0.9.0):
+    - Apollo/Core (= 0.9.0)
+    - Apollo/SQLite (= 0.9.0)
+    - Apollo/WebSocket (= 0.9.0)
+  - Apollo/Core (0.9.0)
+  - Apollo/SQLite (0.9.0):
+    - Apollo/Core
+    - SQLite.swift (~> 0.11.4)
+  - Apollo/WebSocket (0.9.0):
+    - Apollo/Core
+    - Starscream (~> 3.0.2)
+  - GPUImage (0.1.7)
+  - ImageDetect (1.1.2)
+  - JdenticonSwift (1.0)
+  - SortedArray (1.0)
+  - SQLite.swift (0.11.5):
+    - SQLite.swift/standard (= 0.11.5)
+  - SQLite.swift/standard (0.11.5)
+  - Starscream (3.0.5)
+  - SwiftGif (1.6.2)
+  - SwiftOCR (1.1):
+    - GPUImage
+  - SwiftyUserDefaults (4.0.0-alpha.1)
+
+DEPENDENCIES:
+  - Apollo (from `custom-podspec/Apollo.podspec`)
+  - ImageDetect
+  - JdenticonSwift (from `custom-podspec/JdenticonSwift.podspec`)
+  - SortedArray (from `custom-podspec/SortedArray.podspec`)
+  - SwiftGif (from `custom-podspec/SwiftGif.podspec`)
+  - SwiftOCR
+  - SwiftyUserDefaults (= 4.0.0-alpha.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - GPUImage
+    - ImageDetect
+    - SQLite.swift
+    - Starscream
+    - SwiftOCR
+    - SwiftyUserDefaults
+
+EXTERNAL SOURCES:
+  Apollo:
+    :podspec: custom-podspec/Apollo.podspec
+  JdenticonSwift:
+    :podspec: custom-podspec/JdenticonSwift.podspec
+  SortedArray:
+    :podspec: custom-podspec/SortedArray.podspec
+  SwiftGif:
+    :podspec: custom-podspec/SwiftGif.podspec
+
+CHECKOUT OPTIONS:
+  Apollo:
+    :commit: dd096a1b875eb365787bfed563ff9c64a4e0f466
+    :git: https://github.com/apollographql/apollo-ios.git
+  JdenticonSwift:
+    :commit: f1f7f84dd5bf15750b4c6e982aeb1511303fcd4b
+    :git: https://github.com/alejandro-isaza/jdenticon-swift.git
+  SortedArray:
+    :commit: a521f750fccb0743ad082b7cb890a62e132c4fbf
+    :git: https://github.com/ole/SortedArray.git
+  SwiftGif:
+    :commit: c6ec0a1dbb13f11dc0cb689395ef7bcd639d3c69
+    :git: https://github.com/swiftgif/SwiftGif.git
+
+SPEC CHECKSUMS:
+  Apollo: 1989fd87f1389f1a07e70cc46b3420acf96d9f62
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
+  ImageDetect: 2c828415ff500d59375656dfa1a3399ad01e0d62
+  JdenticonSwift: 7b3bf13c3855d6bd4da295e1ca69a4dac0c6cc37
+  SortedArray: 2cbbfbd492cd949190bd09dd063b345aef6b7362
+  SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
+  Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
+  SwiftGif: 474040add9a533ce89df58ef10968d9ca945e8a7
+  SwiftOCR: e1a5c7582f074b54df2b1ad273983088b3cf5d45
+  SwiftyUserDefaults: cebe0ff9472f52699772a514b6f7155861d8069b
+
+PODFILE CHECKSUM: d3e71b7aef7348598eb91d85a8e5c6729aad67af
+
+COCOAPODS: 1.5.3

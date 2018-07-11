@@ -1,0 +1,6 @@
+framework module Pods_ContemPlantUITests {
+  umbrella header "Pods-ContemPlantUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "SortedArray",
+  "version": "1.0",
+  "authors": "ole",
+  "homepage": "https://github.com/ole/SortedArray",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE.txt"
+  },
+  "summary": "An array that keeps its elements sorted according to a given sort predicate.",
+  "source": {
+    "git": "https://github.com/ole/SortedArray.git",
+    "branch": "master"
+  },
+  "requires_arc": true,
+  "source_files": "Sources/*.swift",
+  "platforms": {
+    "ios": "9.0",
+    "osx": "10.10",
+    "tvos": "9.1",
+    "watchos": "3.0"
+  }
+}

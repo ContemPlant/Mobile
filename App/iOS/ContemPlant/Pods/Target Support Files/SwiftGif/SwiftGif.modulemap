@@ -1,0 +1,6 @@
+framework module SwiftGif {
+  umbrella header "SwiftGif-umbrella.h"
+
+  export *
+  module * { export * }
+}

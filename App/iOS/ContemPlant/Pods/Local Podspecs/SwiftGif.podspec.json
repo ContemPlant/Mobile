@@ -1,0 +1,25 @@
+{
+  "name": "SwiftGif",
+  "version": "1.6.2",
+  "authors": {
+    "Arne Bahlo": "hallo@arne.me"
+  },
+  "homepage": "https://github.com/swiftgif/SwiftGif",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "summary": "A small UIImage extension with gif support.",
+  "source": {
+    "git": "https://github.com/swiftgif/SwiftGif.git",
+    "branch": "master"
+  },
+  "requires_arc": true,
+  "source_files": "SwiftGifCommon/*.swift",
+  "platforms": {
+    "ios": "9.0",
+    "osx": "10.10",
+    "tvos": "9.1",
+    "watchos": "3.0"
+  }
+}
