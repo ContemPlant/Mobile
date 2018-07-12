@@ -67,7 +67,7 @@ extension LoadPlantViewController {
             try captureDevice.lockForConfiguration()
             
             // TODO: determine exact/best focus point
-            let focusPoint = CGPoint(x: 0.5, y: 0.5) //just focus in the center of the image
+            let focusPoint = CGPoint(x: 0.75, y: 0.5) //just focus in the center of the image
             if captureDevice.isFocusPointOfInterestSupported { //only if focus is supported
                 captureDevice.focusPointOfInterest = focusPoint
                 captureDevice.focusMode = .autoFocus
@@ -98,61 +98,55 @@ extension LoadPlantViewController {
             return
         }
         
+        //convert to ci image
+        let ciImage = CIImage(cgImage: cgImage)
         
-        //create vision request
-        let imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:]) //basic request handler
         
-        //detect barcodes
-        let barcodeDetectionRequest = VNDetectBarcodesRequest()
-        barcodeDetectionRequest.symbologies = [.EAN8, .EAN13, .code128, .QR]
-        
+        let recognizedString = performQRCodeDetection(image: ciImage)
         
         //stop capture timer before performing the detection
         stopCaptureTimer()
-        
-        //perform the detection
-        DispatchQueue.global(qos: .userInitiated).async {
-            do {
-                //perform request
-                try imageRequestHandler.perform([barcodeDetectionRequest])
-                
-                //get results
-                if let barcodeObservations = barcodeDetectionRequest.results as? [VNBarcodeObservation],
-                    let firstObservedBarcode = barcodeObservations.first,
-                    let readBarcodeContent = firstObservedBarcode.payloadStringValue {
-                    //just select the first one...
-                    
-                    print(readBarcodeContent)
-                    self.loadPlant(onArduWithId: readBarcodeContent, completionHandler: { [weak self] (error) in
-                        DispatchQueue.main.async { //UI stuff always on the main queue
-                            if let error = error {
-                                //do error handling
-                                self?.userInterfaceHandle(loadPlantError: error)
-                                
-                                self?.startCaptureTimer()
-                                return //return and restart the capture timer
-                            }
-                            
-                            //show the screen that indicates a loaded plant
-                            self?.blockUIWithLoadedPlantIndicator()
-                        }
-                    })
-                    
-                    return //don't start capture timer again (belowe)
-                }
-            } catch let error as NSError {
-                //just print out the error
-                print("Failed to perform image request: \(error)")
-            }
+        print(recognizedString)
+        //get results
+        if recognizedString != "" {
+            let readBarcodeContent = recognizedString
             
-            //start capture timer again! (on the main queue)
-            DispatchQueue.main.async {
-                self.startCaptureTimer()
+            print(readBarcodeContent)
+            
+            self.loadPlant(onArduWithId: readBarcodeContent, completionHandler: { [weak self] (error) in
+                DispatchQueue.main.async { //UI stuff always on the main queue
+                    if let error = error {
+                        //do error handling
+                        self?.userInterfaceHandle(loadPlantError: error)
+                        
+                        self?.startCaptureTimer()
+                        return //return and restart the capture timer
+                    }
+                    
+                    //show the screen that indicates a loaded plant
+                    self?.blockUIWithLoadedPlantIndicator()
+                }
+            })
+            
+            return //don't start capture timer again
+        }
+                
+        //start capture timer again!
+        self.startCaptureTimer()
+    }
+    
+    ///Performs detection of the qr code in the given image
+    func performQRCodeDetection(image: CIImage) -> String {
+        var decode = ""
+        let options = [CIDetectorAccuracy: CIDetectorAccuracyHigh]
+        if let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: options) {
+            let features = detector.features(in: image)
+            
+            for feature in features as! [CIQRCodeFeature] {
+                decode = feature.messageString ?? ""
             }
         }
-        
-        
-        return
+        return decode
     }
 }
 
@@ -207,7 +201,7 @@ extension LoadPlantViewController {
 extension LoadPlantViewController {
     class func create(forUser user: User, withPlant plant: Plant) throws -> LoadPlantViewController{
         //create the session
-        guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) ?? AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
+        guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) ?? AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) else {
             //camera not working,
             throw LoadPlantError.cameraProblem
         }

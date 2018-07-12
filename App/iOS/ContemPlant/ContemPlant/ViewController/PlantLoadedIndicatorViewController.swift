@@ -34,7 +34,7 @@ class PlantLoadedIndicatorViewController: UIViewController {
     
     //MARK: - deinit
     deinit {
-        NotificationCenter.default.removeObserver(deviceOrientationObserver)
+        unsetupDeviceOrientationChanges()
     }
 
 }
@@ -53,6 +53,10 @@ extension PlantLoadedIndicatorViewController {
 
 //MARK: - setup device orientation changes
 extension PlantLoadedIndicatorViewController {
+    private func unsetupDeviceOrientationChanges() {
+        NotificationCenter.default.removeObserver(deviceOrientationObserver)
+    }
+    
     private func setupDeviceOrientationChanges() {
         deviceOrientationObserver = NotificationCenter.default.addObserver(forName: UIDevice.orientationDidChangeNotification, object: nil, queue: .main) {[weak self] (_) in
             self?.endLearningIfAllConditionsMet()
@@ -72,6 +76,8 @@ extension PlantLoadedIndicatorViewController {
             
             //show it on the PlantsNavigationController
             (self.presentingViewController as? PlantsNavigationController)?.pushViewController(arVC, animated: false)
+            
+            unsetupDeviceOrientationChanges()
             
             dismiss(animated: true, completion: nil)
         }

@@ -18,6 +18,8 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
     
     private var fullyVisibleARFrame: CGRect!
     
+    private var applicationActiveObserver: NSObjectProtocol?
+    
     //MARK: - outlets
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var scrollView: UIScrollView!
@@ -51,11 +53,13 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
         
         //setup scroll view
         setupScrollView()
+        
+        //setup application active notification
+        setupApplicationActiveNotification()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         //navigation controller stuff
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
@@ -64,7 +68,19 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
         resetTrackingConfig()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //(re)set tracking
+        resetTrackingConfig()
+    }
+    
+    private var isRunning = false
     private func resetTrackingConfig() {
+        guard UIApplication.shared.applicationState != .background else {
+            return //don't reset tracking if in background (does not work...)...
+        }
+        
         guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
             fatalError("Reference images not found! This is likely to be a bug!")
         }
@@ -76,7 +92,9 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
         
         //run the config
         let options: ARSession.RunOptions = [.resetTracking, .removeExistingAnchors]
+        
         sceneView.session.run(config, options: options)
+        isRunning = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -87,8 +105,13 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
         
         // Pause the view's session
         sceneView.session.pause()
+        isRunning = false
     }
 
+    
+    deinit {
+        unsetupApplicationActiveNotification()
+    }
 }
 
 // MARK: - ARSCNViewDelegate
@@ -170,6 +193,20 @@ extension ARPlantViewController {
 //MARK: - interactive pop gesture recognizer
 extension ARPlantViewController: UIGestureRecognizerDelegate { }
 
+//MARK: - foreground/background stuff
+extension ARPlantViewController {
+    private func setupApplicationActiveNotification() {
+        applicationActiveObserver = NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil, using: { [weak self] (notification) in
+            self?.resetTrackingConfig()
+        })
+    }
+    private func unsetupApplicationActiveNotification() {
+        if let observer = applicationActiveObserver {
+            NotificationCenter.default.removeObserver(observer)
+            applicationActiveObserver = nil
+        }
+    }
+}
 
 //MARK: - scroll view stuff
 extension ARPlantViewController {
@@ -191,7 +228,6 @@ extension ARPlantViewController: UIScrollViewDelegate {
         //compute how much of the visible AR-View is covered
         let coveredSpace = (fullyVisibleARFrame.size.height-(scrollableContainer.frame.origin.y-currentOffset.y))/fullyVisibleARFrame.size.height
         
-        print(coveredSpace)
         
         backgroundBlurVisualEffectView.alpha = coveredSpace*2 //faster blur...
     }
