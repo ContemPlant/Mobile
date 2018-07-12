@@ -20,6 +20,11 @@ class PlantLoadedIndicatorViewController: UIViewController {
     //MARK: - outlets
     @IBOutlet var plantGifImageView: UIImageView!
     
+    //MARK: - actions
+    @IBAction func manuallyTriggerEndLearningAction(_ sender: UITapGestureRecognizer) {
+        forceEndLearning()
+    }
+    
     //MARK: - view lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

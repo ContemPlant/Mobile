@@ -315,6 +315,10 @@
                                         <rect key="frame" x="0.0" y="367" width="375" height="367"/>
                                     </imageView>
                                 </subviews>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Rvv-cc-RtE" appends="YES" id="k8g-gU-toh"/>
+                                </connections>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.16862745100000001" green="0.74901960779999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -331,6 +335,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zJm-pb-LBC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="Rvv-cc-RtE">
+                    <connections>
+                        <action selector="manuallyTriggerEndLearningAction:" destination="PFl-aw-qAT" id="69V-6B-2Wf"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="393" y="262"/>
         </scene>
