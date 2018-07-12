@@ -30,3 +30,9 @@ mutation LoadPlantOnArdu($arduID: String!, $plantID: ID!) {
         arduId
     }
 }
+
+mutation UnloadPlant($plantID: ID!) {
+    unloadPlant(plantId: $plantID) {
+        arduId
+    }
+}

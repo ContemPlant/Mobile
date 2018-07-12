@@ -66,20 +66,25 @@ extension PlantLoadedIndicatorViewController {
 
 //MARK: - dismissal
 extension PlantLoadedIndicatorViewController {
+    private func forceEndLearning() {
+        //end learning
+        //unload, but dismiss whether was successful or not (this is just as fallback and for easier testing...)
+        user.unload(plant: loadedPlant)
+        
+        //create ar vc
+        let arVC = ARPlantViewController.create(withUser: user, andPlant: loadedPlant)
+        
+        //show it on the PlantsNavigationController
+        (self.presentingViewController as? PlantsNavigationController)?.pushViewController(arVC, animated: false)
+        
+        unsetupDeviceOrientationChanges()
+        
+        dismiss(animated: true, completion: nil)
+    }
     private func endLearningIfAllConditionsMet() {
         let currentOrientation = UIDevice.current.orientation
         if currentOrientation != .faceUp && currentOrientation != .faceDown {
-            //end learning
-            
-            //create ar vc
-            let arVC = ARPlantViewController.create(withUser: user, andPlant: loadedPlant)
-            
-            //show it on the PlantsNavigationController
-            (self.presentingViewController as? PlantsNavigationController)?.pushViewController(arVC, animated: false)
-            
-            unsetupDeviceOrientationChanges()
-            
-            dismiss(animated: true, completion: nil)
+            forceEndLearning()
         }
     }
     

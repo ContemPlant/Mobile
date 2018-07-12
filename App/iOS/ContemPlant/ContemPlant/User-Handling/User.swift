@@ -78,7 +78,16 @@ final class User: Codable {
             completion(nil)
         }
     }
-   
+    
+    typealias UnloadPlantCompletionHanlder = (Error?) -> Void
+    func unload(plant: Plant, completion: UnloadPlantCompletionHanlder? = nil) {
+        let mutation = UnloadPlantMutation(plantID: plant.id)
+        
+        apollo.perform(mutation: mutation) { (_, error) in
+            completion?(error)
+        }
+    }
+    
 }
 
 //MARK: - logout
