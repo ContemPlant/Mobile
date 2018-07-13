@@ -64,6 +64,8 @@ extension PlantDetailViewController {
         //set title
         self.title = plant.name
         self.healthCircularProgressRing.value = CGFloat(plant.currentHealth*100)
+        self.healthCircularProgressRing.innerRingColor = UIColor(colorBetween: #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1), andColor: #colorLiteral(red: 0.175152868, green: 0.7770395279, blue: 0.2203405499, alpha: 1), percent: CGFloat(plant.currentHealth)) ?? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        
     }
 }
 
