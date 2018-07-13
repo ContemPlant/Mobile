@@ -54,6 +54,9 @@ class UserPlantController {
         //reset
         removeAllPlants()
         
+        //clear cache
+        _ = apollo.clearCache()
+        
         //re-fetch
         apollo.fetch(query: PlantsQuery()) { [weak self] (result, error) in
             if let error = error {
