@@ -37,6 +37,15 @@ class LoadPlantViewController: UIViewController {
         startCaptureTimer()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.shared.isIdleTimerDisabled = true
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
     deinit {
         //stop the capture timer
         stopCaptureTimer()
