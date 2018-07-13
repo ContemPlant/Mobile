@@ -138,28 +138,51 @@ extension ARPlantViewController {
         node.addChildNode(imageLocationIndicatorNode)
         
         
+        let lsystemAssetNames = ["mycelis", "ltree", "ltreerandom", "lychnis"]
+        
         //add the plant node
         // Models from https://poly.google.com/
-        let assetName = "rose" //tree" //daisy" //"forest" //plant" // "tree"
+        let assetName = lsystemAssetNames.randomElement() ?? "tree" // "mycelis" //tree" //daisy" //"forest" //plant" // "tree"
         guard let plantScene = SCNScene(named: "art.scnassets/\(assetName).scn"),
-            let plantNode = plantScene.rootNode.childNode(withName: assetName, recursively: false)
+            let rootNode = plantScene.rootNode.childNode(withName: assetName, recursively: true)
             else {
                 fatalError("Plant 3D model not found. This is probably a bug!")
         }
         
+        var rootStepNodes = rootNode.childNodes { (node, _) in return node.name?.contains("RootStep") ?? false }
+        
+        guard !rootStepNodes.isEmpty else {
+            fatalError("Not enough plant models found. This is probably a bug!")
+        }
+        
+        //a method important for sorting correct by the numbers
+        func rootStepNumber(from node: SCNNode) -> Int {
+            return Int((node.name ?? "").replacingOccurrences(of: "RootStep", with: "")) ?? -1
+        }
+        
+        //order the rootStep nodes alphabetically by name
+        rootStepNodes.sort { rootStepNumber(from: $0) < rootStepNumber(from: $1) }
+        
+        
+        //make sure, plant Health is inside the allowed range
+        let plantHealth = (0.0 ... 1.0).clamp(plant.currentHealth) //plant.currentHealth
+        let plantNode = rootStepNodes[Int(Double(rootStepNodes.count) * plantHealth)] //select a node in the array corresponding to the plant's health
+        
         //OPTIONAL (may be helpful for some models)
         //scale plant node
-        //        let scaleFactor  = 1.0
-        //        plantNode.scale = SCNVector3(scaleFactor, scaleFactor, scaleFactor)
-        //        //position plant
-        //        plantNode.position.y = 0.0 //y is the "height" coordinate in usual 3D-space
+        let scaleFactor  = 0.03
+        plantNode.scale = SCNVector3(scaleFactor, scaleFactor, scaleFactor)
+        //position plant
+        plantNode.position.y = 0.0 //y is the "height" coordinate in usual 3D-space
+        plantNode.position.x = 0.0
+        plantNode.position.z = 0.0
         
         //DEFAULT-Styling of nodes
         plantNode.pivot = SCNMatrix4MakeTranslation(0, plantNode.boundingBox.min.y, 0) //change the "origin" so that the plant is on the "plane"
         
-//        node.addChildNode(plantNode)
+        node.addChildNode(plantNode)
         
-        add3DFractal(toNode: node)
+//        add3DFractal(toNode: node)
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
