@@ -166,7 +166,8 @@ extension ARPlantViewController {
         
         //make sure, plant Health is inside the allowed range
         let plantHealth = (0.0 ... 1.0).clamp(plant.currentHealth) //plant.currentHealth
-        let plantNode = rootStepNodes[Int(Double(rootStepNodes.count) * plantHealth)] //select a node in the array corresponding to the plant's health
+        let plantNode = rootStepNodes[(0 ... rootStepNodes.count-1).clamp(Int(Double(rootStepNodes.count) * plantHealth))] //select a node in the array corresponding to the plant's health
+        //alternative? Double(rootStepNodes.count-1)*plantHealth
         
         //OPTIONAL (may be helpful for some models)
         //scale plant node
