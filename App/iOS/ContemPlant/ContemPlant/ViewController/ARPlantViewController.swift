@@ -181,10 +181,11 @@ extension ARPlantViewController {
         //DEFAULT-Styling of nodes
         plantNode.pivot = SCNMatrix4MakeTranslation(0, plantNode.boundingBox.min.y, 0) //change the "origin" so that the plant is on the "plane"
         
-        node.addChildNode(plantNode)
+        node.addChild(node: plantNode, with: .plop)
         
 //        add3DFractal(toNode: node)
     }
+    
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user

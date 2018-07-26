@@ -10,6 +10,7 @@
 		52D7A5A8942644C4B0CE565E /* Pods_ContemPlant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A71A1491CF75C31B33CD48 /* Pods_ContemPlant.framework */; };
 		6B0CFE5020E02FD500903B69 /* LoadPlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0CFE4F20E02FD500903B69 /* LoadPlantViewController.swift */; };
 		6B0CFE5220E0357F00903B69 /* SimpleErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0CFE5120E0357F00903B69 /* SimpleErrorMessages.swift */; };
+		6B0FE90E210A3A7B006AAA32 /* SCNNode+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0FE90D210A3A7B006AAA32 /* SCNNode+Animations.swift */; };
 		6B152A4720D5E0CD00F5DE1C /* User+DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B152A4620D5E0CD00F5DE1C /* User+DefaultsKeys.swift */; };
 		6B152A4920D5E51A00F5DE1C /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B152A4820D5E51A00F5DE1C /* UserTests.swift */; };
 		6B152A4B20D5EA5B00F5DE1C /* LoginSignupViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B152A4A20D5EA5A00F5DE1C /* LoginSignupViewControllerDelegate.swift */; };
@@ -83,6 +84,7 @@
 		31A71A1491CF75C31B33CD48 /* Pods_ContemPlant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContemPlant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B0CFE4F20E02FD500903B69 /* LoadPlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPlantViewController.swift; sourceTree = "<group>"; };
 		6B0CFE5120E0357F00903B69 /* SimpleErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleErrorMessages.swift; sourceTree = "<group>"; };
+		6B0FE90D210A3A7B006AAA32 /* SCNNode+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNNode+Animations.swift"; sourceTree = "<group>"; };
 		6B152A4620D5E0CD00F5DE1C /* User+DefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+DefaultsKeys.swift"; sourceTree = "<group>"; };
 		6B152A4820D5E51A00F5DE1C /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		6B152A4A20D5EA5A00F5DE1C /* LoginSignupViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				6B5BDA8220F65C3D00A7E692 /* ContemPlantUI+URL.swift */,
 				6B5BDA8620F6843E00A7E692 /* Color+Helpers.swift */,
 				6BB4514820F8157F0070C96F /* Range+Helpers.swift */,
+				6B0FE90D210A3A7B006AAA32 /* SCNNode+Animations.swift */,
 				6B43750220DAFC6A008AF897 /* Jdenticon */,
 			);
 			path = Helpers;
@@ -668,6 +671,7 @@
 				6B152A5120D6A0B400F5DE1C /* PlantsNavigationController.swift in Sources */,
 				6B1D2C1C20E1480700066C84 /* PlantLoadedIndicatorViewController.swift in Sources */,
 				6B5BDA8720F6843E00A7E692 /* Color+Helpers.swift in Sources */,
+				6B0FE90E210A3A7B006AAA32 /* SCNNode+Animations.swift in Sources */,
 				6B152A4F20D69BDA00F5DE1C /* PlantsViewController.swift in Sources */,
 				6BCB576420D47EAD007CF737 /* Constants.swift in Sources */,
 			);
