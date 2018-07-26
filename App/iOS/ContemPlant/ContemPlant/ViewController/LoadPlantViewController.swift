@@ -59,7 +59,10 @@ extension LoadPlantViewController {
         guard captureTimer == nil else {
             return //nothing to do, because timer is already running...
         }
-        captureTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [unowned self] (timer) in
+        captureTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { [unowned self] (timer) in
+            //stop immediately
+            self.stopCaptureTimer()
+            
             //capture photo and analyse
             self.capturePhoto()
         }
@@ -113,9 +116,7 @@ extension LoadPlantViewController {
         
         let recognizedString = performQRCodeDetection(image: ciImage)
         
-        //stop capture timer before performing the detection
-        stopCaptureTimer()
-        print(recognizedString)
+        print("recognized string from QR-Code: ", recognizedString)
         //get results
         if recognizedString != "" {
             let readBarcodeContent = recognizedString
@@ -165,11 +166,13 @@ extension LoadPlantViewController: AVCapturePhotoCaptureDelegate {
         guard let photoData = photo.fileDataRepresentation() else {
             //just log an error
             NSLog("Captured photo cannot be converted to data!")
+            self.startCaptureTimer() //start again...
             return
         }
         
         guard let image = UIImage(data: photoData) else {
             NSLog("Captured photo cannot be converted to a UIImage")
+            self.startCaptureTimer() //start again...
             return
         }
         
@@ -247,6 +250,7 @@ extension LoadPlantViewController {
         vc.captureSession = captureSession
         vc.photoOutput = photoOutput
         vc.captureDevice = captureDevice
+        captureSession.usesApplicationAudioSession = false
         
         vc.user = user
         vc.plant = plant
