@@ -92,6 +92,7 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="5Ji-OE-gKn" firstAttribute="width" secondItem="6Ih-FR-l92" secondAttribute="width" id="BoO-4y-9M1"/>
                                     <constraint firstAttribute="trailing" secondItem="5Ji-OE-gKn" secondAttribute="trailing" id="HTy-hn-p5s"/>
@@ -99,6 +100,9 @@
                                     <constraint firstItem="5Ji-OE-gKn" firstAttribute="top" secondItem="6Ih-FR-l92" secondAttribute="top" id="fqZ-PX-AsV"/>
                                     <constraint firstItem="5Ji-OE-gKn" firstAttribute="leading" secondItem="6Ih-FR-l92" secondAttribute="leading" id="gEK-BW-bbd"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Qeb-K3-IWI" appends="YES" id="cFA-gS-22l"/>
+                                </connections>
                             </scrollView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACm-6Q-4li">
                                 <rect key="frame" x="8" y="44" width="30" height="30"/>
@@ -152,6 +156,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YEt-ex-WAd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="Qeb-K3-IWI">
+                    <connections>
+                        <action selector="doubleTappedOnScrollView:" destination="P40-gZ-kDV" id="0NH-P1-m1N"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1066.4000000000001" y="-417.48768472906403"/>
         </scene>
@@ -180,6 +189,7 @@
                             <constraint firstItem="CEb-Fi-IeB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MwQ-N6-LLd" secondAttribute="leading" id="U61-of-7Wv"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CEb-Fi-IeB" secondAttribute="trailing" id="Xhs-uK-alC"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="9T2-qZ-o4t"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8gI-mc-VGG" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -43,3 +43,20 @@ extension SCNNode {
         return result
     }
 }
+
+
+extension SCNNode {
+    ///loads a node following the naming scheme (name file and root node same)
+    static func loadNode(withName assetName: String) -> SCNNode? {
+        guard let scene = SCNScene(named: "art.scnassets/\(assetName).scn") else {
+            return nil
+        }
+        
+        guard let rootNode = scene.rootNode.childNode(withName: assetName, recursively: true)
+            else {
+                return nil
+        }
+        
+        return rootNode
+    }
+}

@@ -20,6 +20,9 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
     
     private var applicationActiveObserver: NSObjectProtocol?
     
+    private var currentPresentedPlantType: ARPlantNodeType?
+    private var currentPlantNode: SCNNode?
+    
     //MARK: - outlets
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var scrollView: UIScrollView!
@@ -32,6 +35,20 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
     //MARK: - actions
     @IBAction func backButtonTapped(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+    @IBAction func doubleTappedOnScrollView(_ sender: UITapGestureRecognizer) {
+        //change plants
+        
+        let location = sender.location(in: view)
+        
+        if location.x > view.frame.size.width/2.0 {
+            //forward
+            nextPlantRepresentation()
+        }
+        else {
+            //backward
+            previousPlantRepresentation()
+        }
     }
     
     
@@ -106,6 +123,10 @@ class ARPlantViewController: UIViewController, ARSCNViewDelegate {
         // Pause the view's session
         sceneView.session.pause()
         isRunning = false
+        
+        //reset
+        currentPlantNode = nil
+        currentPresentedPlantType = nil
     }
 
     
@@ -137,53 +158,8 @@ extension ARPlantViewController {
         //add the created image location indicator node to the node that is associated with the anchor (automatically by ARKit -> see also the renderer(... nodeFor...)-method)
         node.addChildNode(imageLocationIndicatorNode)
         
-        
-        let lsystemAssetNames = ["mycelis", "ltree", "ltreerandom", "lychnis"]
-        
         //add the plant node
-        // Models from https://poly.google.com/
-        let assetName = lsystemAssetNames.randomElement() ?? "tree" // "mycelis" //tree" //daisy" //"forest" //plant" // "tree"
-        guard let plantScene = SCNScene(named: "art.scnassets/\(assetName).scn"),
-            let rootNode = plantScene.rootNode.childNode(withName: assetName, recursively: true)
-            else {
-                fatalError("Plant 3D model not found. This is probably a bug!")
-        }
-        
-        var rootStepNodes = rootNode.childNodes { (node, _) in return node.name?.contains("RootStep") ?? false }
-        
-        guard !rootStepNodes.isEmpty else {
-            fatalError("Not enough plant models found. This is probably a bug!")
-        }
-        
-        //a method important for sorting correct by the numbers
-        func rootStepNumber(from node: SCNNode) -> Int {
-            return Int((node.name ?? "").replacingOccurrences(of: "RootStep", with: "")) ?? -1
-        }
-        
-        //order the rootStep nodes alphabetically by name
-        rootStepNodes.sort { rootStepNumber(from: $0) < rootStepNumber(from: $1) }
-        
-        
-        //make sure, plant Health is inside the allowed range
-        let plantHealth = (0.0 ... 1.0).clamp(plant.currentHealth) //plant.currentHealth
-        let plantNode = rootStepNodes[(0 ... rootStepNodes.count-1).clamp(Int(Double(rootStepNodes.count) * plantHealth))] //select a node in the array corresponding to the plant's health
-        //alternative? Double(rootStepNodes.count-1)*plantHealth
-        
-        //OPTIONAL (may be helpful for some models)
-        //scale plant node
-        let scaleFactor  = 0.03
-        plantNode.scale = SCNVector3(scaleFactor, scaleFactor, scaleFactor)
-        //position plant
-        plantNode.position.y = 0.0 //y is the "height" coordinate in usual 3D-space
-        plantNode.position.x = 0.0
-        plantNode.position.z = 0.0
-        
-        //DEFAULT-Styling of nodes
-        plantNode.pivot = SCNMatrix4MakeTranslation(0, plantNode.boundingBox.min.y, 0) //change the "origin" so that the plant is on the "plane"
-        
-        node.addChild(node: plantNode, with: .plop)
-        
-//        add3DFractal(toNode: node)
+        currentPresentedPlantType = addRandomLSystemPlantNode(asChildOf: node, withHealth: Float(plant.currentHealth))
     }
     
     
@@ -302,5 +278,190 @@ extension ARPlantViewController {
         let node = SCNNode(geometry: geom)
         
         return node
+    }
+}
+
+
+//MARK: - changing plants
+extension ARPlantViewController {
+    enum FullPlantNodeType: String, ARPlantNodeType, CaseIterable {
+        case tree
+        case daisy
+        case forest
+        case simplePlant = "plant"
+        case rose = "rose"
+        
+        var supportsDifferentSizes: Bool {
+            return false
+        }
+        var customScale: Double? {
+            switch self {
+            case .rose: return 0.005
+            default: return nil
+            }
+        }
+    }
+    enum LsystemPlantNodeType: String, ARPlantNodeType, CaseIterable {
+        case mycelis = "mycelis"
+        case ltree = "ltree"
+        case ltreerandom = "ltreerandom"
+        case lychnis = "lychnis"
+        
+        var supportsDifferentSizes: Bool {
+            return true
+        }
+    }
+    private func addLSystemPlantNode(named lsystemPlantNodeType: LsystemPlantNodeType, asChildOf parent: SCNNode, withHealth health: Float = 1.0) {
+        
+        let lsystemNode = lsystemPlantNodeType.getNewNode()
+        
+        //fin the nodes of the l-system node that represent the different steps
+        var rootStepNodes = lsystemNode.childNodes { (node, _) in return node.name?.contains("RootStep") ?? false }
+        
+        guard !rootStepNodes.isEmpty else {
+            fatalError("Not enough plant models found. This is probably a bug!")
+        }
+        
+        //a method important for sorting correct by the numbers
+        func rootStepNumber(from node: SCNNode) -> Int {
+            return Int((node.name ?? "").replacingOccurrences(of: "RootStep", with: "")) ?? -1
+        }
+        
+        //order the rootStep nodes alphabetically by name
+        rootStepNodes.sort { rootStepNumber(from: $0) < rootStepNumber(from: $1) }
+        
+        
+        //make sure, plant Health is inside the allowed range
+        let plantHealth = (0.0 ... 1.0).clamp(health)
+        let plantNode = rootStepNodes[(0 ... rootStepNodes.count-1).clamp(Int(Float(rootStepNodes.count) * plantHealth))] //select a node in the array corresponding to the plant's health
+        //alternative? Double(rootStepNodes.count-1)*plantHealth
+        
+        
+        //scale plant node
+        let scaleFactor  = 0.007
+        plantNode.scale = SCNVector3(scaleFactor, scaleFactor, scaleFactor)
+        
+        //add the plant node
+        add(plantNode: plantNode, asChildOf: parent)
+    }
+    
+    private func addRandomLSystemPlantNode(asChildOf parent: SCNNode, withHealth health: Float = 1.0) -> LsystemPlantNodeType {
+        let randomLSystem = LsystemPlantNodeType.allCases.randomElement()! //it could never be nil!
+        
+        addLSystemPlantNode(named: randomLSystem, asChildOf: parent, withHealth: health)
+        
+        return randomLSystem
+    }
+    
+    private func add(plantNode: SCNNode, asChildOf parent: SCNNode) {
+        //position plant at origin
+        plantNode.position.y = 0.0 //y is the "height" coordinate in usual 3D-space
+        plantNode.position.x = 0.0
+        plantNode.position.z = 0.0
+        
+        //DEFAULT-Styling of nodes
+        plantNode.pivot = SCNMatrix4MakeTranslation(0, plantNode.boundingBox.min.y, 0) //change the "origin" so that the plant is on the "plane"
+        
+        //"global" current
+        currentPlantNode = plantNode
+        
+        //add plantNode as child of parent with the default animation
+        parent.addChild(node: plantNode, with: .plop)
+        
+    }
+    
+    private func removeCurrentPlantNode() {
+        currentPlantNode?.removeFromParentNode()
+        
+        currentPlantNode = nil
+        currentPresentedPlantType = nil
+    }
+    
+    ///Defines the order of the plants, if changed
+    var allARPlantNodeTypes: [ARPlantNodeType] {
+        return LsystemPlantNodeType.allCases as [ARPlantNodeType] + FullPlantNodeType.allCases as [ARPlantNodeType]
+    }
+    
+    private func nextPlantRepresentation() {
+        switchPlant(withFindNewIndexFun: { $0 + 1 } )
+    }
+    
+    private func previousPlantRepresentation() {
+        switchPlant(withFindNewIndexFun: { $0 - 1 } )
+    }
+    
+    private func switchPlant(withFindNewIndexFun findNewIndex: (Int) -> Int ) {
+        guard let currentPlantNode = currentPlantNode, let parent = currentPlantNode.parent else {
+            return //nothing to do, if nothing isshown at the moment
+        }
+        
+        let plantToShow: ARPlantNodeType
+        if let currentPresentedPlantType = currentPresentedPlantType {
+            let currentIndex = allARPlantNodeTypes.firstIndex { $0 == currentPresentedPlantType }!
+            
+            var index = (findNewIndex(currentIndex))%allARPlantNodeTypes.count
+            if index < 0 {
+                index = allARPlantNodeTypes.count+index
+            }
+            //todo: write something like a "rotating subscript"
+            plantToShow = allARPlantNodeTypes[index]
+        }
+        else {
+            plantToShow = allARPlantNodeTypes.first! //such an element exists always
+        }
+        
+        //remove...
+        removeCurrentPlantNode()
+        
+        //re-set
+        currentPresentedPlantType = plantToShow
+        
+        //add
+        if let plantToShow = plantToShow as? LsystemPlantNodeType {
+            addLSystemPlantNode(named: plantToShow, asChildOf: parent, withHealth: Float(plant.currentHealth))
+        }
+        else {
+            add(plantNode: plantToShow.getNewNode(), asChildOf: parent)
+        }
+    }
+}
+
+///Defines what types of nodes can represent AR plants
+protocol ARPlantNodeType {
+    var assetName: String { get }
+    func getNewNode() -> SCNNode
+    var supportsDifferentSizes: Bool { get }
+    var customScale: Double? { get }
+}
+
+//extension Equatable where Self: ARPlantNodeType {
+//    static func -* (lhs: Self, rhs: Self) -> Bool {
+//        return lhs.assetName == rhs.assetName
+//    }
+//}
+infix operator ==
+func == (lhs: ARPlantNodeType, rhs: ARPlantNodeType) -> Bool {
+    return lhs.assetName == rhs.assetName
+}
+
+extension ARPlantNodeType {
+    var customScale: Double? {
+        return nil
+    }
+    func getNewNode() -> SCNNode {
+        guard let node = SCNNode.loadNode(withName: assetName) else {
+            fatalError("Plant 3D model not found. This is probably a bug!")
+        }
+        if let customScale = customScale {
+            node.scale = SCNVector3(customScale, customScale, customScale)
+        }
+        return node
+    }
+}
+
+
+extension RawRepresentable where RawValue == String, Self: ARPlantNodeType {
+    var assetName: String {
+        return self.rawValue
     }
 }
