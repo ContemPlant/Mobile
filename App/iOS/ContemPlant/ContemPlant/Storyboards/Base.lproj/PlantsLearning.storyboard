@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZbE-yS-fOK">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+        <array key="Lato-Light.ttf">
+            <string>Lato-Light</string>
+        </array>
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+        <array key="Pacifico-Regular.ttf">
+            <string>Pacifico-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Plants-->
+        <scene sceneID="Cgh-Jy-Y84">
+            <objects>
+                <viewController id="dNR-1P-pzh" customClass="PlantsViewController" customModule="ContemPlant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wxn-J2-Bv7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="115" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dv7-zH-eFK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlantTableViewCell" rowHeight="115" id="2g4-8N-5jZ" customClass="PlantTableViewCell" customModule="ContemPlant" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="115"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2g4-8N-5jZ" id="9tL-Io-bMk">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="114.66666666666667"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons/Logo+Lettering" translatesAutoresizingMaskIntoConstraints="NO" id="SYE-uZ-jNG">
+                                                    <rect key="frame" x="15" y="7.3333333333333357" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="cSp-ub-ajL"/>
+                                                        <constraint firstAttribute="width" constant="100" id="jbV-L7-MWc"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qUU-gW-5Md">
+                                                    <rect key="frame" x="123" y="21" width="222" height="73"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unbekannter Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1M-Or-RK5">
+                                                            <rect key="frame" x="0.0" y="0.0" width="215.33333333333334" height="30.333333333333332"/>
+                                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="25"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Cgr-mc-veK">
+                                                            <rect key="frame" x="0.0" y="38.333333333333336" width="222" height="2"/>
+                                                        </progressView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Health: 999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0h-u8-HmC">
+                                                            <rect key="frame" x="0.0" y="48.333333333333329" width="101.33333333333333" height="24.666666666666671"/>
+                                                            <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="tintColor" red="0.16862745100000001" green="0.74901960779999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="Cgr-mc-veK" secondAttribute="trailing" id="2AI-VH-cge"/>
+                                                        <constraint firstItem="Cgr-mc-veK" firstAttribute="leading" secondItem="qUU-gW-5Md" secondAttribute="leading" id="As3-bS-jEC"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qc8-m7-Q72" customClass="JdenticonWebView" customModule="ContemPlant" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="7.3333333333333357" width="100" height="100"/>
+                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="mgH-Dq-8EP"/>
+                                                        <constraint firstAttribute="height" constant="100" id="npL-06-cXV"/>
+                                                    </constraints>
+                                                    <wkWebViewConfiguration key="configuration">
+                                                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                        <wkPreferences key="preferences"/>
+                                                    </wkWebViewConfiguration>
+                                                </wkWebView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SYE-uZ-jNG" firstAttribute="centerY" secondItem="9tL-Io-bMk" secondAttribute="centerY" id="374-gc-Th9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="qUU-gW-5Md" secondAttribute="trailing" constant="15" id="9Mh-sS-dYI"/>
+                                                <constraint firstItem="qUU-gW-5Md" firstAttribute="top" secondItem="9tL-Io-bMk" secondAttribute="topMargin" constant="10" id="E0L-lE-6Xw"/>
+                                                <constraint firstItem="SYE-uZ-jNG" firstAttribute="leading" secondItem="9tL-Io-bMk" secondAttribute="leading" constant="15" id="FSO-wt-hpe"/>
+                                                <constraint firstItem="qc8-m7-Q72" firstAttribute="top" secondItem="9tL-Io-bMk" secondAttribute="top" constant="7.3300000000000001" id="Tn5-Jx-7zc"/>
+                                                <constraint firstItem="qUU-gW-5Md" firstAttribute="leading" secondItem="SYE-uZ-jNG" secondAttribute="trailing" constant="8" id="YYg-YC-liY"/>
+                                                <constraint firstItem="qc8-m7-Q72" firstAttribute="leading" secondItem="9tL-Io-bMk" secondAttribute="leading" constant="15" id="aRd-wi-vq1"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="qUU-gW-5Md" secondAttribute="bottom" constant="10" id="bIj-hj-E6I"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="detailLabel" destination="M0h-u8-HmC" id="bau-ek-H8g"/>
+                                            <outlet property="healthIndicatorProgressView" destination="Cgr-mc-veK" id="3vw-nS-gsR"/>
+                                            <outlet property="jdenticonImageView" destination="SYE-uZ-jNG" id="i5m-dr-tOq"/>
+                                            <outlet property="jdenticonWebView" destination="qc8-m7-Q72" id="WD6-eO-Z3w"/>
+                                            <outlet property="plantNameLabel" destination="G1M-Or-RK5" id="wOi-HB-j9J"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="dNR-1P-pzh" id="HCe-XU-VEU"/>
+                                    <outlet property="delegate" destination="dNR-1P-pzh" id="9om-PZ-xkz"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Dv7-zH-eFK" firstAttribute="leading" secondItem="YLn-tm-OMR" secondAttribute="leading" id="4Df-xe-jLx"/>
+                            <constraint firstAttribute="bottom" secondItem="Dv7-zH-eFK" secondAttribute="bottom" id="R9a-Xm-a8c"/>
+                            <constraint firstItem="Dv7-zH-eFK" firstAttribute="top" secondItem="Wxn-J2-Bv7" secondAttribute="top" id="eb8-hc-iQL"/>
+                            <constraint firstItem="Dv7-zH-eFK" firstAttribute="trailing" secondItem="YLn-tm-OMR" secondAttribute="trailing" id="kW2-GL-8L3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YLn-tm-OMR"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Plants" id="8ze-qO-qEI">
+                        <barButtonItem key="leftBarButtonItem" title="logout" id="IGp-YO-lk3">
+                            <connections>
+                                <action selector="logoutBarButtonItemTapped:" destination="dNR-1P-pzh" id="5TY-pn-K9X"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Dv7-zH-eFK" id="AiW-gz-bTZ"/>
+                        <segue destination="uiW-Bo-ODl" kind="show" identifier="selectedPlantSegue" id="Fwr-hZ-9en"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kgZ-QZ-4Yl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1404" y="-436.69950738916259"/>
+        </scene>
+        <!--Planty-->
+        <scene sceneID="VbK-CO-MTf">
+            <objects>
+                <viewController id="uiW-Bo-ODl" customClass="PlantDetailViewController" customModule="ContemPlant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gmr-1n-uJ0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TX-zz-H9Q">
+                                <rect key="frame" x="0.0" y="696" width="375" height="82"/>
+                                <color key="backgroundColor" red="1" green="0.64705882349999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="82" id="1ch-Vb-XTq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="31"/>
+                                <state key="normal" title="aktivieren">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="activatePlantTapped:" destination="uiW-Bo-ODl" eventType="touchUpInside" id="a8g-6a-g41"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oPc-3B-9eM" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
+                                <rect key="frame" x="8" y="88" width="359" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fullCircle" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ibRingStyle">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showsValueKnob" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="innerRingWidth">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
+                                        <color key="value" red="0.16862745100000001" green="0.74901960779999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="valueKnobColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="valueIndicator" value="%"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="decimalPlaces">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isClockwise" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                        <real key="value" value="180"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="outerRingColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="valueKnobSize">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="33.299999999999997"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="innerRingSpacing">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="innerRingCapStyle">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shouldShowValueText" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showFloatingPoint" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oPc-3B-9eM" firstAttribute="top" secondItem="PbV-Nl-XhR" secondAttribute="top" id="10t-60-dwP"/>
+                            <constraint firstItem="8TX-zz-H9Q" firstAttribute="trailing" secondItem="PbV-Nl-XhR" secondAttribute="trailing" id="64h-kZ-KjL"/>
+                            <constraint firstItem="PbV-Nl-XhR" firstAttribute="trailing" secondItem="oPc-3B-9eM" secondAttribute="trailing" constant="8" id="FNj-d1-0UD"/>
+                            <constraint firstItem="8TX-zz-H9Q" firstAttribute="leading" secondItem="PbV-Nl-XhR" secondAttribute="leading" id="J96-A7-vM1"/>
+                            <constraint firstItem="oPc-3B-9eM" firstAttribute="leading" secondItem="PbV-Nl-XhR" secondAttribute="leading" constant="8" id="MEz-BQ-O7R"/>
+                            <constraint firstItem="8TX-zz-H9Q" firstAttribute="top" secondItem="oPc-3B-9eM" secondAttribute="bottom" constant="8" id="Pwr-b2-rB2"/>
+                            <constraint firstItem="PbV-Nl-XhR" firstAttribute="bottom" secondItem="8TX-zz-H9Q" secondAttribute="bottom" constant="34" id="hNz-QU-r5n"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PbV-Nl-XhR"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Planty" id="fUi-S9-pxV"/>
+                    <connections>
+                        <outlet property="healthCircularProgressRing" destination="oPc-3B-9eM" id="8CI-Ni-naI"/>
+                        <segue destination="Yw0-KJ-Nw3" kind="show" id="lEh-4b-2ws"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Pk-j5-Fi9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-570.39999999999998" y="-437.4384236453202"/>
+        </scene>
+        <!--Load Plant View Controller-->
+        <scene sceneID="bXk-eD-Hhp">
+            <objects>
+                <viewController storyboardIdentifier="LoadPlantViewController" id="Yw0-KJ-Nw3" customClass="LoadPlantViewController" customModule="ContemPlant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6e5-dh-JnK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YDI-nX-2y4">
+                                <rect key="frame" x="8" y="88" width="359" height="724"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitte umgedreht in die Öffung schieben!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="cKk-FR-qbM">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="352"/>
+                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="61"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lr2-4J-VOW">
+                                        <rect key="frame" x="0.0" y="372" width="359" height="352"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="lr2-4J-VOW" firstAttribute="leading" secondItem="YDI-nX-2y4" secondAttribute="leading" id="Doo-5N-qdl"/>
+                                    <constraint firstAttribute="bottom" secondItem="lr2-4J-VOW" secondAttribute="bottom" id="ich-Wi-8dY"/>
+                                    <constraint firstAttribute="trailing" secondItem="lr2-4J-VOW" secondAttribute="trailing" id="oct-e1-aTk"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uMq-BP-Swi" firstAttribute="trailing" secondItem="YDI-nX-2y4" secondAttribute="trailing" constant="8" id="0gb-9L-tJL"/>
+                            <constraint firstItem="YDI-nX-2y4" firstAttribute="leading" secondItem="uMq-BP-Swi" secondAttribute="leading" constant="8" id="XdK-zz-qPD"/>
+                            <constraint firstItem="uMq-BP-Swi" firstAttribute="bottom" secondItem="YDI-nX-2y4" secondAttribute="bottom" id="bK7-EG-JKx"/>
+                            <constraint firstItem="YDI-nX-2y4" firstAttribute="top" secondItem="uMq-BP-Swi" secondAttribute="top" id="ui9-Yi-3pV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uMq-BP-Swi"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xab-Qs-toS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="392.80000000000001" y="-437.4384236453202"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="YzM-w1-5AV">
+            <objects>
+                <viewController id="MC9-ea-FHg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZFs-df-Tka">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rzK-Dp-zaf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EUP-ws-BtA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-578" y="239"/>
+        </scene>
+        <!--Plant Loaded Indicator View Controller-->
+        <scene sceneID="rD4-Au-2Am">
+            <objects>
+                <viewController storyboardIdentifier="PlantLoadedIndicatorViewController" id="PFl-aw-qAT" customClass="PlantLoadedIndicatorViewController" customModule="ContemPlant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wp6-vz-QO0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="KLg-kI-A6Y">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zum Beenden des Lernens, nimm dein Handy einfach aus der Box!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="q3K-Y5-HPm">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="367"/>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="42"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gifs/funnyPlantDanceAnimation" translatesAutoresizingMaskIntoConstraints="NO" id="fQn-uJ-c1q">
+                                        <rect key="frame" x="0.0" y="367" width="375" height="367"/>
+                                    </imageView>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Rvv-cc-RtE" appends="YES" id="k8g-gU-toh"/>
+                                </connections>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16862745100000001" green="0.74901960779999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="KLg-kI-A6Y" firstAttribute="top" secondItem="Dlz-1Y-AVK" secondAttribute="top" id="9I2-N7-fcf"/>
+                            <constraint firstItem="KLg-kI-A6Y" firstAttribute="leading" secondItem="Dlz-1Y-AVK" secondAttribute="leading" id="No1-g2-RJs"/>
+                            <constraint firstItem="Dlz-1Y-AVK" firstAttribute="trailing" secondItem="KLg-kI-A6Y" secondAttribute="trailing" id="SfO-38-FJt"/>
+                            <constraint firstItem="Dlz-1Y-AVK" firstAttribute="bottom" secondItem="KLg-kI-A6Y" secondAttribute="bottom" id="VZK-mn-Pmr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Dlz-1Y-AVK"/>
+                    </view>
+                    <connections>
+                        <outlet property="plantGifImageView" destination="fQn-uJ-c1q" id="mNS-gH-HAS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zJm-pb-LBC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="Rvv-cc-RtE">
+                    <connections>
+                        <action selector="manuallyTriggerEndLearningAction:" destination="PFl-aw-qAT" id="69V-6B-2Wf"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="393" y="262"/>
+        </scene>
+        <!--Plants Navigation Controller-->
+        <scene sceneID="vaa-Qm-uf2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZbE-yS-fOK" customClass="PlantsNavigationController" customModule="ContemPlant" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ro2-ey-HB4">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dNR-1P-pzh" kind="relationship" relationship="rootViewController" id="vTM-Kl-7tF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pdK-xQ-GWV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2346.4000000000001" y="-436.69950738916259"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Gifs/funnyPlantDanceAnimation" width="504" height="504"/>
+        <image name="Icons/Logo+Lettering" width="500" height="500"/>
+    </resources>
+</document>

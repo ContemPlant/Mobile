@@ -1,0 +1,38 @@
+# First query (because at least one graphql-file is required so that apollo-codegen will work!!!!!)
+query Plants {
+    plants {
+        ...BasicPlantDetails
+    }
+}
+
+subscription NewPlants {
+    newPlant {
+        mutation
+        node {
+            id
+            name
+        }
+    }
+}
+
+fragment BasicPlantDetails on Plant {
+    id
+    name
+    plantStates(last:1) {
+        id
+        health
+    }
+}
+
+
+mutation LoadPlantOnArdu($arduID: String!, $plantID: ID!) {
+    loadPlantOnArdu(arduId: $arduID, plantId: $plantID) {
+        arduId
+    }
+}
+
+mutation UnloadPlant($plantID: ID!) {
+    unloadPlant(plantId: $plantID) {
+        arduId
+    }
+}
