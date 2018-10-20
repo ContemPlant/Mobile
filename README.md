@@ -38,6 +38,9 @@ The code (as it is in this repository) is written in a way specific to match our
 * [ReactNative](https://facebook.github.io/react-native/) - Primarily for developing the Android app
 * [GraphQL](https://graphql.org/) - Used for server communication
 
+## Acknowledgements
+3D Models based [Algorithmic Botany via Lindenmayer Systems in Blender](https://github.com/lemurni/lpy-lsystems-blender-addon) and [Poly by Google](https://poly.google.com).
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
